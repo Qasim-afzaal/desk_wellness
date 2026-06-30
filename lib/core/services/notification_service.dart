@@ -31,23 +31,22 @@ class NotificationService {
     return false;
   }
 
-  Future<void> showBreakReminder({required String title, required String body}) async {
-    const details = NotificationDetails(
-      android: AndroidNotificationDetails(
-        'wellness_reminders',
-        'Wellness Reminders',
-        channelDescription: 'Desk breaks, water, and breathing reminders',
-        importance: Importance.defaultImportance,
-      ),
-      iOS: DarwinNotificationDetails(),
-    );
-    await _plugin.show(
-      id: 0,
-      title: title,
-      body: body,
-      notificationDetails: details,
-    );
-  }
+  static const _channelId = 'affirmly_reminders';
+  static const _channelName = 'Daily Affirmations';
+
+  NotificationDetails get _details => const NotificationDetails(
+        android: AndroidNotificationDetails(
+          _channelId,
+          _channelName,
+          channelDescription: 'Morning, midday, and evening affirmation reminders',
+          importance: Importance.defaultImportance,
+        ),
+        iOS: DarwinNotificationDetails(),
+      );
+
+  Future<void> cancel(int id) => _plugin.cancel(id: id);
+
+  Future<void> cancelAll() => _plugin.cancelAll();
 
   Future<void> scheduleDaily({
     required int id,
@@ -66,10 +65,7 @@ class NotificationService {
       title: title,
       body: body,
       scheduledDate: scheduled,
-      notificationDetails: const NotificationDetails(
-        android: AndroidNotificationDetails('wellness_reminders', 'Wellness Reminders'),
-        iOS: DarwinNotificationDetails(),
-      ),
+      notificationDetails: _details,
       androidScheduleMode: AndroidScheduleMode.inexactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time,
     );
