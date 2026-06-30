@@ -17,6 +17,10 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.warning,
     required this.accentBlue,
     required this.accentLavender,
+    required this.cardPink,
+    required this.cardSage,
+    required this.cardYellow,
+    required this.cardForest,
   });
 
   final Color background;
@@ -33,39 +37,51 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color warning;
   final Color accentBlue;
   final Color accentLavender;
+  final Color cardPink;
+  final Color cardSage;
+  final Color cardYellow;
+  final Color cardForest;
 
   static const light = AppColors(
-    background: Color(0xFFF7F8FC),
-    surface: Color(0xFFFFFFFF),
-    surfaceElevated: Color(0xFFF0F3FA),
-    primary: Color(0xFF6B7FD7),
-    primarySoft: Color(0xFFE8ECFA),
-    secondary: Color(0xFF9B8FD9),
-    textPrimary: Color(0xFF1A1D26),
-    textSecondary: Color(0xFF5C6370),
-    textMuted: Color(0xFF9AA3B2),
-    border: Color(0xFFE6EAF2),
-    success: Color(0xFF4CB894),
+    background: Color(0xFFF5F0E8),
+    surface: Color(0xFFFFFBF7),
+    surfaceElevated: Color(0xFFEDE8DF),
+    primary: Color(0xFF3D5A45),
+    primarySoft: Color(0xFFD4E2D0),
+    secondary: Color(0xFFE8C4C4),
+    textPrimary: Color(0xFF1C1C1C),
+    textSecondary: Color(0xFF5C5C5C),
+    textMuted: Color(0xFF9A9488),
+    border: Color(0xFFE5DDD2),
+    success: Color(0xFF6B8F71),
     warning: Color(0xFFE8A84C),
-    accentBlue: Color(0xFF7EB8DA),
-    accentLavender: Color(0xFFC4B5FD),
+    accentBlue: Color(0xFFD8DCE8),
+    accentLavender: Color(0xFFE8C4C4),
+    cardPink: Color(0xFFF2D4D4),
+    cardSage: Color(0xFFD4E2D0),
+    cardYellow: Color(0xFFF5E6A8),
+    cardForest: Color(0xFF3D5A45),
   );
 
   static const dark = AppColors(
-    background: Color(0xFF0E1117),
-    surface: Color(0xFF171B24),
-    surfaceElevated: Color(0xFF1F2430),
-    primary: Color(0xFF8B9AE8),
-    primarySoft: Color(0xFF2A3150),
-    secondary: Color(0xFFB8AAEE),
-    textPrimary: Color(0xFFF3F5FA),
-    textSecondary: Color(0xFFA8B0C0),
-    textMuted: Color(0xFF6B7385),
-    border: Color(0xFF2A3140),
-    success: Color(0xFF5FD4A4),
-    warning: Color(0xFFF0B86A),
-    accentBlue: Color(0xFF8ECAE6),
-    accentLavender: Color(0xFFD4C4FF),
+    background: Color(0xFF1A1A18),
+    surface: Color(0xFF242420),
+    surfaceElevated: Color(0xFF2E2E28),
+    primary: Color(0xFF8FB396),
+    primarySoft: Color(0xFF3D5A45),
+    secondary: Color(0xFFC9A0A0),
+    textPrimary: Color(0xFFF5F0E8),
+    textSecondary: Color(0xFFB8B2A8),
+    textMuted: Color(0xFF7A756C),
+    border: Color(0xFF3A3A34),
+    success: Color(0xFF8FB396),
+    warning: Color(0xFFE8A84C),
+    accentBlue: Color(0xFF5A6078),
+    accentLavender: Color(0xFF8A7070),
+    cardPink: Color(0xFF5A4040),
+    cardSage: Color(0xFF3D5A45),
+    cardYellow: Color(0xFF5A5230),
+    cardForest: Color(0xFF2A3D30),
   );
 
   @override
@@ -92,5 +108,6 @@ abstract final class AppRadius {
   static const sm = 12.0;
   static const md = 16.0;
   static const lg = 24.0;
+  static const xl = 28.0;
   static const pill = 999.0;
 }
