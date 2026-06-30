@@ -10,29 +10,30 @@ class SettingsRepository {
 
   Future<UserSetting> getSettings() => _db.getSettings();
 
-  Future<void> completeOnboarding({
-    required List<String> goals,
-    required String reminderTime,
-    required bool notificationsEnabled,
-  }) async {
+  Future<void> completeOnboarding({List<String> goals = const []}) async {
     await _db.updateSettings(UserSettingsCompanion(
       onboardingComplete: const Value(true),
       goals: Value(goals.join(',')),
-      defaultReminderTime: Value(reminderTime),
-      notificationsEnabled: Value(notificationsEnabled),
+      notificationsEnabled: const Value(true),
     ));
   }
+
+  Future<void> setGoals(List<String> goalIds) =>
+      _db.updateSettings(UserSettingsCompanion(goals: Value(goalIds.join(','))));
+
+  Future<void> setDisplayName(String name) =>
+      _db.updateSettings(UserSettingsCompanion(displayName: Value(name)));
 
   Future<void> setThemeMode(String mode) =>
       _db.updateSettings(UserSettingsCompanion(themeMode: Value(mode)));
 
+  Future<void> setNotificationsEnabled(bool enabled) =>
+      _db.updateSettings(UserSettingsCompanion(notificationsEnabled: Value(enabled)));
+
   Future<void> resetAllData() async {
-    await _db.delete(_db.exerciseHistories).go();
-    await _db.delete(_db.journalEntries).go();
-    await _db.delete(_db.moods).go();
-    await _db.delete(_db.breathingHistories).go();
-    await _db.delete(_db.waterTrackings).go();
-    await _db.delete(_db.dailyProgresses).go();
+    await _db.delete(_db.savedCreations).go();
+    await _db.delete(_db.manifestSessions).go();
+    await _db.update(_db.affirmations).write(const AffirmationsCompanion(isFavorite: Value(false)));
     await _db.updateSettings(const UserSettingsCompanion(onboardingComplete: Value(false)));
   }
 }
