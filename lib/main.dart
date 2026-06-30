@@ -1,8 +1,10 @@
 import 'package:desk_wellness/app/app.dart';
+import 'package:desk_wellness/core/di/injection.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 Future<void> main() async {
-  await bootstrap();
-  runApp(const ProviderScope(child: DeskWellnessApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
+  runApp(const ProviderScope(child: AffirmlyApp()));
 }

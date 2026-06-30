@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>CalmCalibrate</string>
+	<string>Affirmly</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -60,7 +60,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSUserNotificationUsageDescription</key>
-	<string>CalmCalibrate sends wellness break reminders during your work hours. You can turn these off anytime in Settings.</string>
+	<string>Affirmly sends daily affirmation reminders. You can turn these off anytime in Settings.</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Affirmly saves your affirmation wallpapers to your photo library.</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>

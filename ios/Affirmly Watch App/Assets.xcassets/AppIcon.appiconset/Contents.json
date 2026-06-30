@@ -1,0 +1,14 @@
+{
+  "images" : [
+    {
+      "idiom" : "watch",
+      "role" : "appLauncher",
+      "size" : "1024x1024",
+      "subtype" : "38mm"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
