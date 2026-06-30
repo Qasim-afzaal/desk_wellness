@@ -5601,6 +5601,907 @@ class FavoritesCompanion extends UpdateCompanion<Favorite> {
   }
 }
 
+class $SavedCreationsTable extends SavedCreations
+    with TableInfo<$SavedCreationsTable, SavedCreation> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $SavedCreationsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _contentMeta = const VerificationMeta(
+    'content',
+  );
+  @override
+  late final GeneratedColumn<String> content = GeneratedColumn<String>(
+    'content',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _templateIdMeta = const VerificationMeta(
+    'templateId',
+  );
+  @override
+  late final GeneratedColumn<String> templateId = GeneratedColumn<String>(
+    'template_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _backgroundHexMeta = const VerificationMeta(
+    'backgroundHex',
+  );
+  @override
+  late final GeneratedColumn<String> backgroundHex = GeneratedColumn<String>(
+    'background_hex',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _accentHexMeta = const VerificationMeta(
+    'accentHex',
+  );
+  @override
+  late final GeneratedColumn<String> accentHex = GeneratedColumn<String>(
+    'accent_hex',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _fontStyleMeta = const VerificationMeta(
+    'fontStyle',
+  );
+  @override
+  late final GeneratedColumn<String> fontStyle = GeneratedColumn<String>(
+    'font_style',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('calm'),
+  );
+  static const VerificationMeta _textAlignMeta = const VerificationMeta(
+    'textAlign',
+  );
+  @override
+  late final GeneratedColumn<String> textAlign = GeneratedColumn<String>(
+    'text_align',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('center'),
+  );
+  static const VerificationMeta _exportTypeMeta = const VerificationMeta(
+    'exportType',
+  );
+  @override
+  late final GeneratedColumn<String> exportType = GeneratedColumn<String>(
+    'export_type',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant('wallpaper'),
+  );
+  static const VerificationMeta _isBookmarkedMeta = const VerificationMeta(
+    'isBookmarked',
+  );
+  @override
+  late final GeneratedColumn<bool> isBookmarked = GeneratedColumn<bool>(
+    'is_bookmarked',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("is_bookmarked" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    content,
+    templateId,
+    backgroundHex,
+    accentHex,
+    fontStyle,
+    textAlign,
+    exportType,
+    isBookmarked,
+    createdAt,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'saved_creations';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<SavedCreation> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('content')) {
+      context.handle(
+        _contentMeta,
+        content.isAcceptableOrUnknown(data['content']!, _contentMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_contentMeta);
+    }
+    if (data.containsKey('template_id')) {
+      context.handle(
+        _templateIdMeta,
+        templateId.isAcceptableOrUnknown(data['template_id']!, _templateIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_templateIdMeta);
+    }
+    if (data.containsKey('background_hex')) {
+      context.handle(
+        _backgroundHexMeta,
+        backgroundHex.isAcceptableOrUnknown(
+          data['background_hex']!,
+          _backgroundHexMeta,
+        ),
+      );
+    } else if (isInserting) {
+      context.missing(_backgroundHexMeta);
+    }
+    if (data.containsKey('accent_hex')) {
+      context.handle(
+        _accentHexMeta,
+        accentHex.isAcceptableOrUnknown(data['accent_hex']!, _accentHexMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_accentHexMeta);
+    }
+    if (data.containsKey('font_style')) {
+      context.handle(
+        _fontStyleMeta,
+        fontStyle.isAcceptableOrUnknown(data['font_style']!, _fontStyleMeta),
+      );
+    }
+    if (data.containsKey('text_align')) {
+      context.handle(
+        _textAlignMeta,
+        textAlign.isAcceptableOrUnknown(data['text_align']!, _textAlignMeta),
+      );
+    }
+    if (data.containsKey('export_type')) {
+      context.handle(
+        _exportTypeMeta,
+        exportType.isAcceptableOrUnknown(data['export_type']!, _exportTypeMeta),
+      );
+    }
+    if (data.containsKey('is_bookmarked')) {
+      context.handle(
+        _isBookmarkedMeta,
+        isBookmarked.isAcceptableOrUnknown(
+          data['is_bookmarked']!,
+          _isBookmarkedMeta,
+        ),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  SavedCreation map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return SavedCreation(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      content: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}content'],
+      )!,
+      templateId: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}template_id'],
+      )!,
+      backgroundHex: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}background_hex'],
+      )!,
+      accentHex: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}accent_hex'],
+      )!,
+      fontStyle: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}font_style'],
+      )!,
+      textAlign: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}text_align'],
+      )!,
+      exportType: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}export_type'],
+      )!,
+      isBookmarked: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}is_bookmarked'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+    );
+  }
+
+  @override
+  $SavedCreationsTable createAlias(String alias) {
+    return $SavedCreationsTable(attachedDatabase, alias);
+  }
+}
+
+class SavedCreation extends DataClass implements Insertable<SavedCreation> {
+  final int id;
+  final String content;
+  final String templateId;
+  final String backgroundHex;
+  final String accentHex;
+  final String fontStyle;
+  final String textAlign;
+  final String exportType;
+  final bool isBookmarked;
+  final DateTime createdAt;
+  const SavedCreation({
+    required this.id,
+    required this.content,
+    required this.templateId,
+    required this.backgroundHex,
+    required this.accentHex,
+    required this.fontStyle,
+    required this.textAlign,
+    required this.exportType,
+    required this.isBookmarked,
+    required this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['content'] = Variable<String>(content);
+    map['template_id'] = Variable<String>(templateId);
+    map['background_hex'] = Variable<String>(backgroundHex);
+    map['accent_hex'] = Variable<String>(accentHex);
+    map['font_style'] = Variable<String>(fontStyle);
+    map['text_align'] = Variable<String>(textAlign);
+    map['export_type'] = Variable<String>(exportType);
+    map['is_bookmarked'] = Variable<bool>(isBookmarked);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    return map;
+  }
+
+  SavedCreationsCompanion toCompanion(bool nullToAbsent) {
+    return SavedCreationsCompanion(
+      id: Value(id),
+      content: Value(content),
+      templateId: Value(templateId),
+      backgroundHex: Value(backgroundHex),
+      accentHex: Value(accentHex),
+      fontStyle: Value(fontStyle),
+      textAlign: Value(textAlign),
+      exportType: Value(exportType),
+      isBookmarked: Value(isBookmarked),
+      createdAt: Value(createdAt),
+    );
+  }
+
+  factory SavedCreation.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return SavedCreation(
+      id: serializer.fromJson<int>(json['id']),
+      content: serializer.fromJson<String>(json['content']),
+      templateId: serializer.fromJson<String>(json['templateId']),
+      backgroundHex: serializer.fromJson<String>(json['backgroundHex']),
+      accentHex: serializer.fromJson<String>(json['accentHex']),
+      fontStyle: serializer.fromJson<String>(json['fontStyle']),
+      textAlign: serializer.fromJson<String>(json['textAlign']),
+      exportType: serializer.fromJson<String>(json['exportType']),
+      isBookmarked: serializer.fromJson<bool>(json['isBookmarked']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'content': serializer.toJson<String>(content),
+      'templateId': serializer.toJson<String>(templateId),
+      'backgroundHex': serializer.toJson<String>(backgroundHex),
+      'accentHex': serializer.toJson<String>(accentHex),
+      'fontStyle': serializer.toJson<String>(fontStyle),
+      'textAlign': serializer.toJson<String>(textAlign),
+      'exportType': serializer.toJson<String>(exportType),
+      'isBookmarked': serializer.toJson<bool>(isBookmarked),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+    };
+  }
+
+  SavedCreation copyWith({
+    int? id,
+    String? content,
+    String? templateId,
+    String? backgroundHex,
+    String? accentHex,
+    String? fontStyle,
+    String? textAlign,
+    String? exportType,
+    bool? isBookmarked,
+    DateTime? createdAt,
+  }) => SavedCreation(
+    id: id ?? this.id,
+    content: content ?? this.content,
+    templateId: templateId ?? this.templateId,
+    backgroundHex: backgroundHex ?? this.backgroundHex,
+    accentHex: accentHex ?? this.accentHex,
+    fontStyle: fontStyle ?? this.fontStyle,
+    textAlign: textAlign ?? this.textAlign,
+    exportType: exportType ?? this.exportType,
+    isBookmarked: isBookmarked ?? this.isBookmarked,
+    createdAt: createdAt ?? this.createdAt,
+  );
+  SavedCreation copyWithCompanion(SavedCreationsCompanion data) {
+    return SavedCreation(
+      id: data.id.present ? data.id.value : this.id,
+      content: data.content.present ? data.content.value : this.content,
+      templateId: data.templateId.present
+          ? data.templateId.value
+          : this.templateId,
+      backgroundHex: data.backgroundHex.present
+          ? data.backgroundHex.value
+          : this.backgroundHex,
+      accentHex: data.accentHex.present ? data.accentHex.value : this.accentHex,
+      fontStyle: data.fontStyle.present ? data.fontStyle.value : this.fontStyle,
+      textAlign: data.textAlign.present ? data.textAlign.value : this.textAlign,
+      exportType: data.exportType.present
+          ? data.exportType.value
+          : this.exportType,
+      isBookmarked: data.isBookmarked.present
+          ? data.isBookmarked.value
+          : this.isBookmarked,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SavedCreation(')
+          ..write('id: $id, ')
+          ..write('content: $content, ')
+          ..write('templateId: $templateId, ')
+          ..write('backgroundHex: $backgroundHex, ')
+          ..write('accentHex: $accentHex, ')
+          ..write('fontStyle: $fontStyle, ')
+          ..write('textAlign: $textAlign, ')
+          ..write('exportType: $exportType, ')
+          ..write('isBookmarked: $isBookmarked, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(
+    id,
+    content,
+    templateId,
+    backgroundHex,
+    accentHex,
+    fontStyle,
+    textAlign,
+    exportType,
+    isBookmarked,
+    createdAt,
+  );
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is SavedCreation &&
+          other.id == this.id &&
+          other.content == this.content &&
+          other.templateId == this.templateId &&
+          other.backgroundHex == this.backgroundHex &&
+          other.accentHex == this.accentHex &&
+          other.fontStyle == this.fontStyle &&
+          other.textAlign == this.textAlign &&
+          other.exportType == this.exportType &&
+          other.isBookmarked == this.isBookmarked &&
+          other.createdAt == this.createdAt);
+}
+
+class SavedCreationsCompanion extends UpdateCompanion<SavedCreation> {
+  final Value<int> id;
+  final Value<String> content;
+  final Value<String> templateId;
+  final Value<String> backgroundHex;
+  final Value<String> accentHex;
+  final Value<String> fontStyle;
+  final Value<String> textAlign;
+  final Value<String> exportType;
+  final Value<bool> isBookmarked;
+  final Value<DateTime> createdAt;
+  const SavedCreationsCompanion({
+    this.id = const Value.absent(),
+    this.content = const Value.absent(),
+    this.templateId = const Value.absent(),
+    this.backgroundHex = const Value.absent(),
+    this.accentHex = const Value.absent(),
+    this.fontStyle = const Value.absent(),
+    this.textAlign = const Value.absent(),
+    this.exportType = const Value.absent(),
+    this.isBookmarked = const Value.absent(),
+    this.createdAt = const Value.absent(),
+  });
+  SavedCreationsCompanion.insert({
+    this.id = const Value.absent(),
+    required String content,
+    required String templateId,
+    required String backgroundHex,
+    required String accentHex,
+    this.fontStyle = const Value.absent(),
+    this.textAlign = const Value.absent(),
+    this.exportType = const Value.absent(),
+    this.isBookmarked = const Value.absent(),
+    this.createdAt = const Value.absent(),
+  }) : content = Value(content),
+       templateId = Value(templateId),
+       backgroundHex = Value(backgroundHex),
+       accentHex = Value(accentHex);
+  static Insertable<SavedCreation> custom({
+    Expression<int>? id,
+    Expression<String>? content,
+    Expression<String>? templateId,
+    Expression<String>? backgroundHex,
+    Expression<String>? accentHex,
+    Expression<String>? fontStyle,
+    Expression<String>? textAlign,
+    Expression<String>? exportType,
+    Expression<bool>? isBookmarked,
+    Expression<DateTime>? createdAt,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (content != null) 'content': content,
+      if (templateId != null) 'template_id': templateId,
+      if (backgroundHex != null) 'background_hex': backgroundHex,
+      if (accentHex != null) 'accent_hex': accentHex,
+      if (fontStyle != null) 'font_style': fontStyle,
+      if (textAlign != null) 'text_align': textAlign,
+      if (exportType != null) 'export_type': exportType,
+      if (isBookmarked != null) 'is_bookmarked': isBookmarked,
+      if (createdAt != null) 'created_at': createdAt,
+    });
+  }
+
+  SavedCreationsCompanion copyWith({
+    Value<int>? id,
+    Value<String>? content,
+    Value<String>? templateId,
+    Value<String>? backgroundHex,
+    Value<String>? accentHex,
+    Value<String>? fontStyle,
+    Value<String>? textAlign,
+    Value<String>? exportType,
+    Value<bool>? isBookmarked,
+    Value<DateTime>? createdAt,
+  }) {
+    return SavedCreationsCompanion(
+      id: id ?? this.id,
+      content: content ?? this.content,
+      templateId: templateId ?? this.templateId,
+      backgroundHex: backgroundHex ?? this.backgroundHex,
+      accentHex: accentHex ?? this.accentHex,
+      fontStyle: fontStyle ?? this.fontStyle,
+      textAlign: textAlign ?? this.textAlign,
+      exportType: exportType ?? this.exportType,
+      isBookmarked: isBookmarked ?? this.isBookmarked,
+      createdAt: createdAt ?? this.createdAt,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (content.present) {
+      map['content'] = Variable<String>(content.value);
+    }
+    if (templateId.present) {
+      map['template_id'] = Variable<String>(templateId.value);
+    }
+    if (backgroundHex.present) {
+      map['background_hex'] = Variable<String>(backgroundHex.value);
+    }
+    if (accentHex.present) {
+      map['accent_hex'] = Variable<String>(accentHex.value);
+    }
+    if (fontStyle.present) {
+      map['font_style'] = Variable<String>(fontStyle.value);
+    }
+    if (textAlign.present) {
+      map['text_align'] = Variable<String>(textAlign.value);
+    }
+    if (exportType.present) {
+      map['export_type'] = Variable<String>(exportType.value);
+    }
+    if (isBookmarked.present) {
+      map['is_bookmarked'] = Variable<bool>(isBookmarked.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('SavedCreationsCompanion(')
+          ..write('id: $id, ')
+          ..write('content: $content, ')
+          ..write('templateId: $templateId, ')
+          ..write('backgroundHex: $backgroundHex, ')
+          ..write('accentHex: $accentHex, ')
+          ..write('fontStyle: $fontStyle, ')
+          ..write('textAlign: $textAlign, ')
+          ..write('exportType: $exportType, ')
+          ..write('isBookmarked: $isBookmarked, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+}
+
+class $ManifestSessionsTable extends ManifestSessions
+    with TableInfo<$ManifestSessionsTable, ManifestSession> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $ManifestSessionsTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    hasAutoIncrement: true,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'PRIMARY KEY AUTOINCREMENT',
+    ),
+  );
+  static const VerificationMeta _contentMeta = const VerificationMeta(
+    'content',
+  );
+  @override
+  late final GeneratedColumn<String> content = GeneratedColumn<String>(
+    'content',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _goalTagMeta = const VerificationMeta(
+    'goalTag',
+  );
+  @override
+  late final GeneratedColumn<String> goalTag = GeneratedColumn<String>(
+    'goal_tag',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+    defaultValue: const Constant(''),
+  );
+  static const VerificationMeta _createdAtMeta = const VerificationMeta(
+    'createdAt',
+  );
+  @override
+  late final GeneratedColumn<DateTime> createdAt = GeneratedColumn<DateTime>(
+    'created_at',
+    aliasedName,
+    false,
+    type: DriftSqlType.dateTime,
+    requiredDuringInsert: false,
+    defaultValue: currentDateAndTime,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [id, content, goalTag, createdAt];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'manifest_sessions';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<ManifestSession> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('content')) {
+      context.handle(
+        _contentMeta,
+        content.isAcceptableOrUnknown(data['content']!, _contentMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_contentMeta);
+    }
+    if (data.containsKey('goal_tag')) {
+      context.handle(
+        _goalTagMeta,
+        goalTag.isAcceptableOrUnknown(data['goal_tag']!, _goalTagMeta),
+      );
+    }
+    if (data.containsKey('created_at')) {
+      context.handle(
+        _createdAtMeta,
+        createdAt.isAcceptableOrUnknown(data['created_at']!, _createdAtMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  ManifestSession map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return ManifestSession(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      content: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}content'],
+      )!,
+      goalTag: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}goal_tag'],
+      )!,
+      createdAt: attachedDatabase.typeMapping.read(
+        DriftSqlType.dateTime,
+        data['${effectivePrefix}created_at'],
+      )!,
+    );
+  }
+
+  @override
+  $ManifestSessionsTable createAlias(String alias) {
+    return $ManifestSessionsTable(attachedDatabase, alias);
+  }
+}
+
+class ManifestSession extends DataClass implements Insertable<ManifestSession> {
+  final int id;
+  final String content;
+  final String goalTag;
+  final DateTime createdAt;
+  const ManifestSession({
+    required this.id,
+    required this.content,
+    required this.goalTag,
+    required this.createdAt,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['content'] = Variable<String>(content);
+    map['goal_tag'] = Variable<String>(goalTag);
+    map['created_at'] = Variable<DateTime>(createdAt);
+    return map;
+  }
+
+  ManifestSessionsCompanion toCompanion(bool nullToAbsent) {
+    return ManifestSessionsCompanion(
+      id: Value(id),
+      content: Value(content),
+      goalTag: Value(goalTag),
+      createdAt: Value(createdAt),
+    );
+  }
+
+  factory ManifestSession.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return ManifestSession(
+      id: serializer.fromJson<int>(json['id']),
+      content: serializer.fromJson<String>(json['content']),
+      goalTag: serializer.fromJson<String>(json['goalTag']),
+      createdAt: serializer.fromJson<DateTime>(json['createdAt']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'content': serializer.toJson<String>(content),
+      'goalTag': serializer.toJson<String>(goalTag),
+      'createdAt': serializer.toJson<DateTime>(createdAt),
+    };
+  }
+
+  ManifestSession copyWith({
+    int? id,
+    String? content,
+    String? goalTag,
+    DateTime? createdAt,
+  }) => ManifestSession(
+    id: id ?? this.id,
+    content: content ?? this.content,
+    goalTag: goalTag ?? this.goalTag,
+    createdAt: createdAt ?? this.createdAt,
+  );
+  ManifestSession copyWithCompanion(ManifestSessionsCompanion data) {
+    return ManifestSession(
+      id: data.id.present ? data.id.value : this.id,
+      content: data.content.present ? data.content.value : this.content,
+      goalTag: data.goalTag.present ? data.goalTag.value : this.goalTag,
+      createdAt: data.createdAt.present ? data.createdAt.value : this.createdAt,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ManifestSession(')
+          ..write('id: $id, ')
+          ..write('content: $content, ')
+          ..write('goalTag: $goalTag, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode => Object.hash(id, content, goalTag, createdAt);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is ManifestSession &&
+          other.id == this.id &&
+          other.content == this.content &&
+          other.goalTag == this.goalTag &&
+          other.createdAt == this.createdAt);
+}
+
+class ManifestSessionsCompanion extends UpdateCompanion<ManifestSession> {
+  final Value<int> id;
+  final Value<String> content;
+  final Value<String> goalTag;
+  final Value<DateTime> createdAt;
+  const ManifestSessionsCompanion({
+    this.id = const Value.absent(),
+    this.content = const Value.absent(),
+    this.goalTag = const Value.absent(),
+    this.createdAt = const Value.absent(),
+  });
+  ManifestSessionsCompanion.insert({
+    this.id = const Value.absent(),
+    required String content,
+    this.goalTag = const Value.absent(),
+    this.createdAt = const Value.absent(),
+  }) : content = Value(content);
+  static Insertable<ManifestSession> custom({
+    Expression<int>? id,
+    Expression<String>? content,
+    Expression<String>? goalTag,
+    Expression<DateTime>? createdAt,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (content != null) 'content': content,
+      if (goalTag != null) 'goal_tag': goalTag,
+      if (createdAt != null) 'created_at': createdAt,
+    });
+  }
+
+  ManifestSessionsCompanion copyWith({
+    Value<int>? id,
+    Value<String>? content,
+    Value<String>? goalTag,
+    Value<DateTime>? createdAt,
+  }) {
+    return ManifestSessionsCompanion(
+      id: id ?? this.id,
+      content: content ?? this.content,
+      goalTag: goalTag ?? this.goalTag,
+      createdAt: createdAt ?? this.createdAt,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (content.present) {
+      map['content'] = Variable<String>(content.value);
+    }
+    if (goalTag.present) {
+      map['goal_tag'] = Variable<String>(goalTag.value);
+    }
+    if (createdAt.present) {
+      map['created_at'] = Variable<DateTime>(createdAt.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('ManifestSessionsCompanion(')
+          ..write('id: $id, ')
+          ..write('content: $content, ')
+          ..write('goalTag: $goalTag, ')
+          ..write('createdAt: $createdAt')
+          ..write(')'))
+        .toString();
+  }
+}
+
 abstract class _$AppDatabase extends GeneratedDatabase {
   _$AppDatabase(QueryExecutor e) : super(e);
   $AppDatabaseManager get managers => $AppDatabaseManager(this);
@@ -5622,6 +6523,10 @@ abstract class _$AppDatabase extends GeneratedDatabase {
   late final $BreathingHistoriesTable breathingHistories =
       $BreathingHistoriesTable(this);
   late final $FavoritesTable favorites = $FavoritesTable(this);
+  late final $SavedCreationsTable savedCreations = $SavedCreationsTable(this);
+  late final $ManifestSessionsTable manifestSessions = $ManifestSessionsTable(
+    this,
+  );
   @override
   Iterable<TableInfo<Table, Object?>> get allTables =>
       allSchemaEntities.whereType<TableInfo<Table, Object?>>();
@@ -5640,6 +6545,8 @@ abstract class _$AppDatabase extends GeneratedDatabase {
     waterTrackings,
     breathingHistories,
     favorites,
+    savedCreations,
+    manifestSessions,
   ];
 }
 
@@ -9297,6 +10204,486 @@ typedef $$FavoritesTableProcessedTableManager =
       Favorite,
       PrefetchHooks Function()
     >;
+typedef $$SavedCreationsTableCreateCompanionBuilder =
+    SavedCreationsCompanion Function({
+      Value<int> id,
+      required String content,
+      required String templateId,
+      required String backgroundHex,
+      required String accentHex,
+      Value<String> fontStyle,
+      Value<String> textAlign,
+      Value<String> exportType,
+      Value<bool> isBookmarked,
+      Value<DateTime> createdAt,
+    });
+typedef $$SavedCreationsTableUpdateCompanionBuilder =
+    SavedCreationsCompanion Function({
+      Value<int> id,
+      Value<String> content,
+      Value<String> templateId,
+      Value<String> backgroundHex,
+      Value<String> accentHex,
+      Value<String> fontStyle,
+      Value<String> textAlign,
+      Value<String> exportType,
+      Value<bool> isBookmarked,
+      Value<DateTime> createdAt,
+    });
+
+class $$SavedCreationsTableFilterComposer
+    extends Composer<_$AppDatabase, $SavedCreationsTable> {
+  $$SavedCreationsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get content => $composableBuilder(
+    column: $table.content,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get templateId => $composableBuilder(
+    column: $table.templateId,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get backgroundHex => $composableBuilder(
+    column: $table.backgroundHex,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get accentHex => $composableBuilder(
+    column: $table.accentHex,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get fontStyle => $composableBuilder(
+    column: $table.fontStyle,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get textAlign => $composableBuilder(
+    column: $table.textAlign,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get exportType => $composableBuilder(
+    column: $table.exportType,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get isBookmarked => $composableBuilder(
+    column: $table.isBookmarked,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$SavedCreationsTableOrderingComposer
+    extends Composer<_$AppDatabase, $SavedCreationsTable> {
+  $$SavedCreationsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get content => $composableBuilder(
+    column: $table.content,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get templateId => $composableBuilder(
+    column: $table.templateId,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get backgroundHex => $composableBuilder(
+    column: $table.backgroundHex,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get accentHex => $composableBuilder(
+    column: $table.accentHex,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get fontStyle => $composableBuilder(
+    column: $table.fontStyle,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get textAlign => $composableBuilder(
+    column: $table.textAlign,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get exportType => $composableBuilder(
+    column: $table.exportType,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get isBookmarked => $composableBuilder(
+    column: $table.isBookmarked,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$SavedCreationsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $SavedCreationsTable> {
+  $$SavedCreationsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get content =>
+      $composableBuilder(column: $table.content, builder: (column) => column);
+
+  GeneratedColumn<String> get templateId => $composableBuilder(
+    column: $table.templateId,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get backgroundHex => $composableBuilder(
+    column: $table.backgroundHex,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get accentHex =>
+      $composableBuilder(column: $table.accentHex, builder: (column) => column);
+
+  GeneratedColumn<String> get fontStyle =>
+      $composableBuilder(column: $table.fontStyle, builder: (column) => column);
+
+  GeneratedColumn<String> get textAlign =>
+      $composableBuilder(column: $table.textAlign, builder: (column) => column);
+
+  GeneratedColumn<String> get exportType => $composableBuilder(
+    column: $table.exportType,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<bool> get isBookmarked => $composableBuilder(
+    column: $table.isBookmarked,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$SavedCreationsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $SavedCreationsTable,
+          SavedCreation,
+          $$SavedCreationsTableFilterComposer,
+          $$SavedCreationsTableOrderingComposer,
+          $$SavedCreationsTableAnnotationComposer,
+          $$SavedCreationsTableCreateCompanionBuilder,
+          $$SavedCreationsTableUpdateCompanionBuilder,
+          (
+            SavedCreation,
+            BaseReferences<_$AppDatabase, $SavedCreationsTable, SavedCreation>,
+          ),
+          SavedCreation,
+          PrefetchHooks Function()
+        > {
+  $$SavedCreationsTableTableManager(
+    _$AppDatabase db,
+    $SavedCreationsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$SavedCreationsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$SavedCreationsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$SavedCreationsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> content = const Value.absent(),
+                Value<String> templateId = const Value.absent(),
+                Value<String> backgroundHex = const Value.absent(),
+                Value<String> accentHex = const Value.absent(),
+                Value<String> fontStyle = const Value.absent(),
+                Value<String> textAlign = const Value.absent(),
+                Value<String> exportType = const Value.absent(),
+                Value<bool> isBookmarked = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => SavedCreationsCompanion(
+                id: id,
+                content: content,
+                templateId: templateId,
+                backgroundHex: backgroundHex,
+                accentHex: accentHex,
+                fontStyle: fontStyle,
+                textAlign: textAlign,
+                exportType: exportType,
+                isBookmarked: isBookmarked,
+                createdAt: createdAt,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String content,
+                required String templateId,
+                required String backgroundHex,
+                required String accentHex,
+                Value<String> fontStyle = const Value.absent(),
+                Value<String> textAlign = const Value.absent(),
+                Value<String> exportType = const Value.absent(),
+                Value<bool> isBookmarked = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => SavedCreationsCompanion.insert(
+                id: id,
+                content: content,
+                templateId: templateId,
+                backgroundHex: backgroundHex,
+                accentHex: accentHex,
+                fontStyle: fontStyle,
+                textAlign: textAlign,
+                exportType: exportType,
+                isBookmarked: isBookmarked,
+                createdAt: createdAt,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$SavedCreationsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $SavedCreationsTable,
+      SavedCreation,
+      $$SavedCreationsTableFilterComposer,
+      $$SavedCreationsTableOrderingComposer,
+      $$SavedCreationsTableAnnotationComposer,
+      $$SavedCreationsTableCreateCompanionBuilder,
+      $$SavedCreationsTableUpdateCompanionBuilder,
+      (
+        SavedCreation,
+        BaseReferences<_$AppDatabase, $SavedCreationsTable, SavedCreation>,
+      ),
+      SavedCreation,
+      PrefetchHooks Function()
+    >;
+typedef $$ManifestSessionsTableCreateCompanionBuilder =
+    ManifestSessionsCompanion Function({
+      Value<int> id,
+      required String content,
+      Value<String> goalTag,
+      Value<DateTime> createdAt,
+    });
+typedef $$ManifestSessionsTableUpdateCompanionBuilder =
+    ManifestSessionsCompanion Function({
+      Value<int> id,
+      Value<String> content,
+      Value<String> goalTag,
+      Value<DateTime> createdAt,
+    });
+
+class $$ManifestSessionsTableFilterComposer
+    extends Composer<_$AppDatabase, $ManifestSessionsTable> {
+  $$ManifestSessionsTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get content => $composableBuilder(
+    column: $table.content,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get goalTag => $composableBuilder(
+    column: $table.goalTag,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnFilters(column),
+  );
+}
+
+class $$ManifestSessionsTableOrderingComposer
+    extends Composer<_$AppDatabase, $ManifestSessionsTable> {
+  $$ManifestSessionsTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get content => $composableBuilder(
+    column: $table.content,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get goalTag => $composableBuilder(
+    column: $table.goalTag,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<DateTime> get createdAt => $composableBuilder(
+    column: $table.createdAt,
+    builder: (column) => ColumnOrderings(column),
+  );
+}
+
+class $$ManifestSessionsTableAnnotationComposer
+    extends Composer<_$AppDatabase, $ManifestSessionsTable> {
+  $$ManifestSessionsTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumn<String> get content =>
+      $composableBuilder(column: $table.content, builder: (column) => column);
+
+  GeneratedColumn<String> get goalTag =>
+      $composableBuilder(column: $table.goalTag, builder: (column) => column);
+
+  GeneratedColumn<DateTime> get createdAt =>
+      $composableBuilder(column: $table.createdAt, builder: (column) => column);
+}
+
+class $$ManifestSessionsTableTableManager
+    extends
+        RootTableManager<
+          _$AppDatabase,
+          $ManifestSessionsTable,
+          ManifestSession,
+          $$ManifestSessionsTableFilterComposer,
+          $$ManifestSessionsTableOrderingComposer,
+          $$ManifestSessionsTableAnnotationComposer,
+          $$ManifestSessionsTableCreateCompanionBuilder,
+          $$ManifestSessionsTableUpdateCompanionBuilder,
+          (
+            ManifestSession,
+            BaseReferences<
+              _$AppDatabase,
+              $ManifestSessionsTable,
+              ManifestSession
+            >,
+          ),
+          ManifestSession,
+          PrefetchHooks Function()
+        > {
+  $$ManifestSessionsTableTableManager(
+    _$AppDatabase db,
+    $ManifestSessionsTable table,
+  ) : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$ManifestSessionsTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$ManifestSessionsTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$ManifestSessionsTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<String> content = const Value.absent(),
+                Value<String> goalTag = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => ManifestSessionsCompanion(
+                id: id,
+                content: content,
+                goalTag: goalTag,
+                createdAt: createdAt,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required String content,
+                Value<String> goalTag = const Value.absent(),
+                Value<DateTime> createdAt = const Value.absent(),
+              }) => ManifestSessionsCompanion.insert(
+                id: id,
+                content: content,
+                goalTag: goalTag,
+                createdAt: createdAt,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map((e) => (e.readTable(table), BaseReferences(db, table, e)))
+              .toList(),
+          prefetchHooksCallback: null,
+        ),
+      );
+}
+
+typedef $$ManifestSessionsTableProcessedTableManager =
+    ProcessedTableManager<
+      _$AppDatabase,
+      $ManifestSessionsTable,
+      ManifestSession,
+      $$ManifestSessionsTableFilterComposer,
+      $$ManifestSessionsTableOrderingComposer,
+      $$ManifestSessionsTableAnnotationComposer,
+      $$ManifestSessionsTableCreateCompanionBuilder,
+      $$ManifestSessionsTableUpdateCompanionBuilder,
+      (
+        ManifestSession,
+        BaseReferences<_$AppDatabase, $ManifestSessionsTable, ManifestSession>,
+      ),
+      ManifestSession,
+      PrefetchHooks Function()
+    >;
 
 class $AppDatabaseManager {
   final _$AppDatabase _db;
@@ -9327,4 +10714,8 @@ class $AppDatabaseManager {
       $$BreathingHistoriesTableTableManager(_db, _db.breathingHistories);
   $$FavoritesTableTableManager get favorites =>
       $$FavoritesTableTableManager(_db, _db.favorites);
+  $$SavedCreationsTableTableManager get savedCreations =>
+      $$SavedCreationsTableTableManager(_db, _db.savedCreations);
+  $$ManifestSessionsTableTableManager get manifestSessions =>
+      $$ManifestSessionsTableTableManager(_db, _db.manifestSessions);
 }
