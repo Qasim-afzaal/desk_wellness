@@ -5,6 +5,7 @@ import 'package:drift/native.dart';
 import 'package:path/path.dart' as p;
 import 'package:path_provider/path_provider.dart';
 
+import 'package:desk_wellness/database/seed_affirmations.dart';
 import 'package:desk_wellness/database/seed_data.dart';
 import 'package:desk_wellness/database/tables.dart';
 
@@ -24,6 +25,8 @@ part 'app_database.g.dart';
   WaterTrackings,
   BreathingHistories,
   Favorites,
+  SavedCreations,
+  ManifestSessions,
 ])
 class AppDatabase extends _$AppDatabase {
   AppDatabase(super.e);
@@ -35,7 +38,7 @@ class AppDatabase extends _$AppDatabase {
   static Future<AppDatabase> open() async {
     if (_instance != null) return _instance!;
     final dir = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dir.path, 'desk_wellness.sqlite'));
+    final file = File(p.join(dir.path, 'kindled_studio.sqlite'));
     _instance = AppDatabase(NativeDatabase.createInBackground(file));
     await _instance!._ensureSeed();
     return _instance!;
@@ -46,17 +49,42 @@ class AppDatabase extends _$AppDatabase {
   }
 
   @override
-  int get schemaVersion => 1;
+  int get schemaVersion => 4;
+
+  @override
+  MigrationStrategy get migration => MigrationStrategy(
+        onCreate: (m) async => m.createAll(),
+        onUpgrade: (m, from, to) async {
+          if (from < 2) {
+            await m.createTable(savedCreations);
+          }
+          if (from < 3) {
+            await m.createTable(manifestSessions);
+          }
+          if (from < 4) {
+            await _seedExpandedAffirmations();
+          }
+        },
+      );
+
+  Future<void> _seedExpandedAffirmations() async {
+    final existing = await select(affirmations).get();
+    final known = existing.map((a) => a.content).toSet();
+    final missing = SeedAffirmations.entries
+        .where((e) => !known.contains(e.$2))
+        .map((e) => AffirmationsCompanion.insert(content: e.$2, category: e.$1))
+        .toList();
+    if (missing.isEmpty) return;
+    await batch((b) => b.insertAll(affirmations, missing));
+  }
 
   Future<void> _ensureSeed() async {
     final settings = await select(userSettings).getSingleOrNull();
     if (settings != null) return;
     await transaction(() async {
       await batch((b) {
-        b.insertAll(exerciseCategories, SeedData.categories);
-        b.insertAll(exercises, SeedData.exercises);
         b.insertAll(affirmations, SeedData.affirmations);
-        b.insertAll(achievements, SeedData.achievements);
+        b.insertAll(reminders, SeedData.defaultReminders);
         b.insert(userSettings, SeedData.defaultSettings);
       });
     });

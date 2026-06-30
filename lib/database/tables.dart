@@ -122,3 +122,23 @@ class Favorites extends Table {
   TextColumn get entityType => text()(); // exercise, affirmation
   IntColumn get entityId => integer()();
 }
+
+class SavedCreations extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get content => text()();
+  TextColumn get templateId => text()();
+  TextColumn get backgroundHex => text()();
+  TextColumn get accentHex => text()();
+  TextColumn get fontStyle => text().withDefault(const Constant('calm'))();
+  TextColumn get textAlign => text().withDefault(const Constant('center'))();
+  TextColumn get exportType => text().withDefault(const Constant('wallpaper'))();
+  BoolColumn get isBookmarked => boolean().withDefault(const Constant(true))();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+}
+
+class ManifestSessions extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get content => text()();
+  TextColumn get goalTag => text().withDefault(const Constant(''))();
+  DateTimeColumn get createdAt => dateTime().withDefault(currentDateAndTime)();
+}
