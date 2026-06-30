@@ -1,20 +1,18 @@
-# CalmCalibrate (desk_wellness)
+# Kindled Studio
 
-Premium offline-first wellness app for desk workers — Flutter MVP with Riverpod, GetIt, GoRouter, and Drift.
+Daily affirmation app — write affirmations, customize templates, and turn them into wallpapers.
 
 ## Features
 
-- Home dashboard (wellness score, streak, mood, affirmations, water)
-- Office exercise library with timer sessions
-- Guided breathing (animated circle)
-- Mood tracker with weekly charts
-- Journal with local SQLite storage
-- Affirmations (create, favorite, categories)
-- Local notification reminders
-- Progress & achievements
-- Profile (theme, privacy, reset)
+- **Today** — daily affirmation, streak, wallpaper count
+- **Templates** — calm & bold design gallery
+- **Editor** — write text, pick backgrounds, fonts, and layout
+- **Wallpaper export** — preview lock screen, save to photos, share
+- **Saved library** — bookmark and search your creations
+- **Notifications** — morning, midday, and evening reminders
+- **Profile** — streak, weekly rhythm chart, theme settings
 
-**100% offline.** No auth, no backend, no Firebase.
+**100% offline.** No auth, no backend.
 
 ## Getting started
 
@@ -24,11 +22,6 @@ dart run build_runner build --delete-conflicting-outputs
 flutter run
 ```
 
-## Docs
-
-- [Product specification](docs/PRODUCT_SPEC.md)
-- Cursor skill: `.cursor/skills/desk-wellness-mvp/SKILL.md`
-
 ## Architecture
 
 ```
@@ -37,4 +30,6 @@ lib/features/* → repositories → Drift (SQLite)
               ↑ GetIt (bootstrap)
 ```
 
-Reference implementation sibling: `../calm_calibrate` (BLoC variant).
+## Stack
+
+Flutter · Riverpod · GetIt · GoRouter · Drift · gal (save to photos)

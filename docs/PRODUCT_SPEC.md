@@ -1,15 +1,14 @@
-# CalmCalibrate — Product Specification
+# Desk Wellness — Product Specification
 
-**Project:** `desk_wellness` (display name: CalmCalibrate)  
+**Project:** `desk_wellness` (display name: Desk Wellness)  
 **Version:** 1.0.0 MVP  
-**Stack:** Flutter · Riverpod · GetIt · GoRouter · Drift · SQLite  
-**Reference:** Architecture inspired by [calm_calibrate](../calm_calibrate) (BLoC variant)
+**Stack:** Flutter · Riverpod · GetIt · GoRouter · Drift · SQLite
 
 ---
 
 ## 1. Product Overview
 
-CalmCalibrate is a **premium, offline-first wellness app** for people who sit for long hours—office workers, developers, students, and remote professionals. It helps users improve posture, reduce stress, stay focused, and build healthier work habits through guided desk exercises, breathing sessions, affirmations, journaling, mood tracking, and local reminders.
+Desk Wellness is a **premium, offline-first wellness app** for people who sit for long hours—office workers, developers, students, and remote professionals. It helps users improve posture, reduce stress, stay focused, and build healthier work habits through guided desk exercises, breathing sessions, affirmations, journaling, mood tracking, and local reminders.
 
 **Core principles:**
 - 100% serverless — no auth, no cloud DB, no REST APIs
@@ -69,7 +68,7 @@ No login, no account creation, no network dependency.
 ## 5. Information Architecture
 
 ```
-CalmCalibrate
+Desk Wellness
 ├── Onboarding (first run only)
 ├── Main Shell
 │   ├── Home
@@ -230,7 +229,7 @@ lib/
 
 **Pattern:** Screen → `ref.watch(repoProvider)` → Repository → Drift.
 
-No BLoC in this variant (differs from original `calm_calibrate`).
+State management uses Riverpod (not BLoC).
 
 ---
 
@@ -346,4 +345,4 @@ flutter run
 ```
 
 **Bundle IDs:** `com.intellig.deskwellness.desk_wellness`  
-**Display name:** CalmCalibrate
+**Display name:** Desk Wellness
