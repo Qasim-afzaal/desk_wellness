@@ -1,5 +1,5 @@
 name: desk_wellness
-description: CalmCalibrate — premium offline-first wellness for desk workers.
+description: Affirmly — daily affirmations for a positive mindset.
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -29,7 +29,12 @@ dependencies:
   flutter_timezone: ^5.1.0
   fl_chart: ^1.2.0
   lottie: ^3.3.3
+  flutter_animate: ^4.5.2
   share_plus: ^11.0.0
+  gal: ^2.3.1
+  flutter_tts: ^4.2.0
+  home_widget: ^0.7.0
+  watch_connectivity: ^0.2.9
 
 dev_dependencies:
   flutter_test:
