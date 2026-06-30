@@ -1,11 +1,11 @@
 {
-    "name": "desk_wellness",
-    "short_name": "desk_wellness",
+    "name": "Kindled Studio",
+    "short_name": "Kindled",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "Daily affirmations turned into beautiful wallpapers.",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

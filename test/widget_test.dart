@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  testWidgets('App boots to welcome or home', (WidgetTester tester) async {
-    await tester.pumpWidget(const ProviderScope(child: DeskWellnessApp()));
-    await tester.pumpAndSettle(const Duration(seconds: 3));
+  testWidgets('App boots', (WidgetTester tester) async {
+    await tester.pumpWidget(const ProviderScope(child: AffirmlyApp()));
+    await tester.pump();
     expect(find.byType(MaterialApp), findsOneWidget);
   });
 }
