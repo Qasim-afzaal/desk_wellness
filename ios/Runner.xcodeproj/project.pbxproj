@@ -8,22 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
-		1D9CE3DB5DF10476465744B6 /* Affirmly Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 7D1DCCD4D29366F76C8E9A63 /* Affirmly Watch App.app */; };
 		331C808B294A63AB00263BE5 /* RunnerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 331C807B294A618700263BE5 /* RunnerTests.swift */; };
-		37246DA9ABA9A79989380E5A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2BD18E828245203484528C2 /* ContentView.swift */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
-		3F50F5F9726BBDD4B5EB3DBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 606903D19EA633A24988A756 /* Assets.xcassets */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		7884E8682EC3CC0700C636F2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7884E8672EC3CC0400C636F2 /* SceneDelegate.swift */; };
-		7DF78102CCBCC4D2F62D8F59 /* AffirmlyWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F83253A830B3FA558A534790 /* AffirmlyWatchApp.swift */; };
-		90B8E06AEA1534CCFA4F2983 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0FC0324C14BEFC02FF5BC4A2 /* Preview Assets.xcassets */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		9DE9F000F9CB81FAEB09E271 /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 38B0BA2A9C8BF8CFBED8091E /* Pods_RunnerTests.framework */; };
-		9E32A7F7B1A827E201F84547 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C25EC3B292908DF147FE2111 /* Pods_Runner.framework */; };
-		A64CF3CFB18426A423C24E04 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B87B1E8E6575F91D69EB07CC /* Foundation.framework */; };
-		DDFC53C6ACE3805FF3C98750 /* WatchSessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B0DA735163B46E21637F45C /* WatchSessionManager.swift */; };
+		ECA67CEF4F3F8F09DB3A72DE /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D1A4B82C4B84B788B1CC94 /* Pods_Runner.framework */; };
+		FE5F75DBDF81D017AC5B5A4E /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442A4732461A1089DB169061 /* Pods_RunnerTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -33,13 +26,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 97C146ED1CF9000F007C117D;
 			remoteInfo = Runner;
-		};
-		690B6BEDCBF8F8D3FA2124E3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D773DF4821385CBCB2E7B14F;
-			remoteInfo = "Affirmly Watch App";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -54,30 +40,17 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CD4C12F62555B1274047D0D0 /* Embed Watch Content */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 16;
-			files = (
-				1D9CE3DB5DF10476465744B6 /* Affirmly Watch App.app in Embed Watch Content */,
-			);
-			name = "Embed Watch Content";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		071139AF2F5DA920A3A02FF7 /* Pods-RunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		0FC0324C14BEFC02FF5BC4A2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; name = "Preview Assets.xcassets"; path = "Preview Content/Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
-		285740C5C90A1C1991312303 /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
-		2B24779858480A90F9F8214E /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		281D3E2BC92B798EACBEC8AF /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		331C807B294A618700263BE5 /* RunnerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunnerTests.swift; sourceTree = "<group>"; };
 		331C8081294A63A400263BE5 /* RunnerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunnerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		38B0BA2A9C8BF8CFBED8091E /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		442A4732461A1089DB169061 /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		606903D19EA633A24988A756 /* Assets.xcassets */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -85,6 +58,7 @@
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
 		7D1DCCD4D29366F76C8E9A63 /* Affirmly Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Affirmly Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B0DA735163B46E21637F45C /* WatchSessionManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = WatchSessionManager.swift; sourceTree = "<group>"; };
+		92043BEFE6A163BB4BF882E6 /* Pods-RunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,12 +66,13 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AE51137F956B3289414CCE40 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		B2BD18E828245203484528C2 /* ContentView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		B36339A1F8A5055E82191BA8 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
 		B87B1E8E6575F91D69EB07CC /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/WatchOS.platform/Developer/SDKs/WatchOS11.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		C25EC3B292908DF147FE2111 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D71DC53FFCA5EAF335A5B2CB /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
-		F44CDC799EC6C9E0BF0B88D7 /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
+		B919E86C7C18585E7DA6039F /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
+		BA2318BFDB3631984ED408FB /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
+		D9D1A4B82C4B84B788B1CC94 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9E4DB7774987426328FAEFD /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		F83253A830B3FA558A534790 /* AffirmlyWatchApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AffirmlyWatchApp.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,15 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9DE9F000F9CB81FAEB09E271 /* Pods_RunnerTests.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		70215DB4B8B9661A3FC99245 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				A64CF3CFB18426A423C24E04 /* Foundation.framework in Frameworks */,
+				FE5F75DBDF81D017AC5B5A4E /* Pods_RunnerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -122,33 +89,33 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9E32A7F7B1A827E201F84547 /* Pods_Runner.framework in Frameworks */,
+				ECA67CEF4F3F8F09DB3A72DE /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		00DAD6056E2BE07D822E2DB1 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				2B24779858480A90F9F8214E /* Pods-Runner.debug.xcconfig */,
-				B36339A1F8A5055E82191BA8 /* Pods-Runner.release.xcconfig */,
-				D71DC53FFCA5EAF335A5B2CB /* Pods-Runner.profile.xcconfig */,
-				071139AF2F5DA920A3A02FF7 /* Pods-RunnerTests.debug.xcconfig */,
-				285740C5C90A1C1991312303 /* Pods-RunnerTests.release.xcconfig */,
-				F44CDC799EC6C9E0BF0B88D7 /* Pods-RunnerTests.profile.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		331C8082294A63A400263BE5 /* RunnerTests */ = {
 			isa = PBXGroup;
 			children = (
 				331C807B294A618700263BE5 /* RunnerTests.swift */,
 			);
 			path = RunnerTests;
+			sourceTree = "<group>";
+		};
+		700E6F6900D8B71D75576D1E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AE51137F956B3289414CCE40 /* Pods-Runner.debug.xcconfig */,
+				B919E86C7C18585E7DA6039F /* Pods-Runner.release.xcconfig */,
+				D9E4DB7774987426328FAEFD /* Pods-Runner.profile.xcconfig */,
+				92043BEFE6A163BB4BF882E6 /* Pods-RunnerTests.debug.xcconfig */,
+				281D3E2BC92B798EACBEC8AF /* Pods-RunnerTests.release.xcconfig */,
+				BA2318BFDB3631984ED408FB /* Pods-RunnerTests.profile.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		9740EEB11CF90186004384FC /* Flutter */ = {
@@ -169,9 +136,9 @@
 				97C146F01CF9000F007C117D /* Runner */,
 				97C146EF1CF9000F007C117D /* Products */,
 				331C8082294A63A400263BE5 /* RunnerTests */,
-				00DAD6056E2BE07D822E2DB1 /* Pods */,
 				D789E838D42F56DD54A6A2E5 /* Frameworks */,
 				DAF68F762C56E6F6C5C52748 /* Affirmly Watch App */,
+				700E6F6900D8B71D75576D1E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -212,9 +179,9 @@
 		D789E838D42F56DD54A6A2E5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				C25EC3B292908DF147FE2111 /* Pods_Runner.framework */,
-				38B0BA2A9C8BF8CFBED8091E /* Pods_RunnerTests.framework */,
 				9ABFB1A0DC861C90D81C8D81 /* watchOS */,
+				D9D1A4B82C4B84B788B1CC94 /* Pods_Runner.framework */,
+				442A4732461A1089DB169061 /* Pods_RunnerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -239,7 +206,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 331C8087294A63A400263BE5 /* Build configuration list for PBXNativeTarget "RunnerTests" */;
 			buildPhases = (
-				D31CB02502F3FA80F323311C /* [CP] Check Pods Manifest.lock */,
+				17B9C790251CC2F94D2B77F5 /* [CP] Check Pods Manifest.lock */,
 				331C807D294A63A400263BE5 /* Sources */,
 				331C807F294A63A400263BE5 /* Resources */,
 				30D149DF393DE7A57B5D16DC /* Frameworks */,
@@ -258,42 +225,23 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
-				473D9D17476EDB947A5FF7CE /* [CP] Check Pods Manifest.lock */,
+				A4AE8D605BFD687F11EC7B2F /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
-				14451A4A23B39CE285E20E42 /* [CP] Embed Pods Frameworks */,
-				CD4C12F62555B1274047D0D0 /* Embed Watch Content */,
+				5ABFE28DBFBE3D793D58D0D2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				45A0D6004183BFDACF09BDA6 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
-		};
-		D773DF4821385CBCB2E7B14F /* Affirmly Watch App */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8A613056493076A49AA006FE /* Build configuration list for PBXNativeTarget "Affirmly Watch App" */;
-			buildPhases = (
-				B6A82407C986CEEB98E1BFBC /* Sources */,
-				70215DB4B8B9661A3FC99245 /* Frameworks */,
-				EAA76E5F126021DF6642F2BD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "Affirmly Watch App";
-			productName = "Affirmly Watch App";
-			productReference = 7D1DCCD4D29366F76C8E9A63 /* Affirmly Watch App.app */;
-			productType = "com.apple.product-type.application.watchapp2";
 		};
 /* End PBXNativeTarget section */
 
@@ -330,7 +278,6 @@
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
 				331C8080294A63A400263BE5 /* RunnerTests */,
-				D773DF4821385CBCB2E7B14F /* Affirmly Watch App */,
 			);
 		};
 /* End PBXProject section */
@@ -354,33 +301,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EAA76E5F126021DF6642F2BD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				3F50F5F9726BBDD4B5EB3DBB /* Assets.xcassets in Resources */,
-				90B8E06AEA1534CCFA4F2983 /* Preview Assets.xcassets in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		14451A4A23B39CE285E20E42 /* [CP] Embed Pods Frameworks */ = {
+		17B9C790251CC2F94D2B77F5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RunnerTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
@@ -399,26 +342,21 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
 		};
-		473D9D17476EDB947A5FF7CE /* [CP] Check Pods Manifest.lock */ = {
+		5ABFE28DBFBE3D793D58D0D2 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		9740EEB61CF901F6004384FC /* Run Script */ = {
@@ -436,7 +374,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
 		};
-		D31CB02502F3FA80F323311C /* [CP] Check Pods Manifest.lock */ = {
+		A4AE8D605BFD687F11EC7B2F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -451,7 +389,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-RunnerTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -479,16 +417,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		B6A82407C986CEEB98E1BFBC /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				7DF78102CCBCC4D2F62D8F59 /* AffirmlyWatchApp.swift in Sources */,
-				37246DA9ABA9A79989380E5A /* ContentView.swift in Sources */,
-				DDFC53C6ACE3805FF3C98750 /* WatchSessionManager.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -496,12 +424,6 @@
 			isa = PBXTargetDependency;
 			target = 97C146ED1CF9000F007C117D /* Runner */;
 			targetProxy = 331C8085294A63A400263BE5 /* PBXContainerItemProxy */;
-		};
-		45A0D6004183BFDACF09BDA6 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = "Affirmly Watch App";
-			target = D773DF4821385CBCB2E7B14F /* Affirmly Watch App */;
-			targetProxy = 690B6BEDCBF8F8D3FA2124E3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -602,7 +524,7 @@
 		};
 		331C8088294A63A400263BE5 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 071139AF2F5DA920A3A02FF7 /* Pods-RunnerTests.debug.xcconfig */;
+			baseConfigurationReference = 92043BEFE6A163BB4BF882E6 /* Pods-RunnerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -620,7 +542,7 @@
 		};
 		331C8089294A63A400263BE5 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 285740C5C90A1C1991312303 /* Pods-RunnerTests.release.xcconfig */;
+			baseConfigurationReference = 281D3E2BC92B798EACBEC8AF /* Pods-RunnerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -636,7 +558,7 @@
 		};
 		331C808A294A63A400263BE5 /* Profile */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F44CDC799EC6C9E0BF0B88D7 /* Pods-RunnerTests.profile.xcconfig */;
+			baseConfigurationReference = BA2318BFDB3631984ED408FB /* Pods-RunnerTests.profile.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -649,43 +571,6 @@
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Runner.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Runner";
 			};
 			name = Profile;
-		};
-		36A2D976A105C749DAA5CA16 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_ASSET_PATHS = "\"Affirmly Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 736C7NWXUW;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Affirmly;
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.intellig.deskwellness.deskWellness;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intellig.deskwellness.deskWellness.watchkitapp;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Debug;
-		};
-		90EB081FBD6FBCC474B563AB /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_ASSET_PATHS = "\"Affirmly Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 736C7NWXUW;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Affirmly;
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.intellig.deskwellness.deskWellness;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intellig.deskwellness.deskWellness.watchkitapp;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Release;
 		};
 		97C147031CF9000F007C117D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -845,25 +730,6 @@
 			};
 			name = Release;
 		};
-		9BD03A380E9E3EA4ECE55E68 /* Profile */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				DEVELOPMENT_ASSET_PATHS = "\"Affirmly Watch App/Preview Content\"";
-				DEVELOPMENT_TEAM = 736C7NWXUW;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_CFBundleDisplayName = Affirmly;
-				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = com.intellig.deskwellness.deskWellness;
-				PRODUCT_BUNDLE_IDENTIFIER = com.intellig.deskwellness.deskWellness.watchkitapp;
-				SDKROOT = watchos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 4;
-				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Profile;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -873,16 +739,6 @@
 				331C8088294A63A400263BE5 /* Debug */,
 				331C8089294A63A400263BE5 /* Release */,
 				331C808A294A63A400263BE5 /* Profile */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8A613056493076A49AA006FE /* Build configuration list for PBXNativeTarget "Affirmly Watch App" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				90EB081FBD6FBCC474B563AB /* Release */,
-				36A2D976A105C749DAA5CA16 /* Debug */,
-				9BD03A380E9E3EA4ECE55E68 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
