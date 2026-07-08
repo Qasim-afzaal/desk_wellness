@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'celestial_theme.dart';
+
 @immutable
 class AppColors extends ThemeExtension<AppColors> {
   const AppColors({
@@ -17,6 +19,8 @@ class AppColors extends ThemeExtension<AppColors> {
     required this.warning,
     required this.accentBlue,
     required this.accentLavender,
+    required this.onPrimary,
+    required this.buttonPrimary,
     required this.cardPink,
     required this.cardSage,
     required this.cardYellow,
@@ -37,51 +41,57 @@ class AppColors extends ThemeExtension<AppColors> {
   final Color warning;
   final Color accentBlue;
   final Color accentLavender;
+  final Color onPrimary;
+  final Color buttonPrimary;
   final Color cardPink;
   final Color cardSage;
   final Color cardYellow;
   final Color cardForest;
 
   static const light = AppColors(
-    background: Color(0xFFF5F0E8),
-    surface: Color(0xFFFFFBF7),
-    surfaceElevated: Color(0xFFEDE8DF),
-    primary: Color(0xFF3D5A45),
-    primarySoft: Color(0xFFD4E2D0),
-    secondary: Color(0xFFE8C4C4),
-    textPrimary: Color(0xFF1C1C1C),
-    textSecondary: Color(0xFF5C5C5C),
-    textMuted: Color(0xFF9A9488),
-    border: Color(0xFFE5DDD2),
-    success: Color(0xFF6B8F71),
-    warning: Color(0xFFE8A84C),
+    background: CelestialColorsLight.background,
+    surface: CelestialColorsLight.surface,
+    surfaceElevated: CelestialColorsLight.surfaceContainer,
+    primary: CelestialColorsLight.accent,
+    primarySoft: CelestialColorsLight.selectedFill,
+    secondary: CelestialColorsLight.secondary,
+    textPrimary: CelestialColorsLight.onSurface,
+    textSecondary: CelestialColorsLight.onSurfaceVariant,
+    textMuted: Color(0xFF8A7A9A),
+    border: CelestialColorsLight.outlineVariant,
+    success: Color(0xFF5A9E6E),
+    warning: CelestialColorsLight.tertiary,
     accentBlue: Color(0xFFD8DCE8),
-    accentLavender: Color(0xFFE8C4C4),
-    cardPink: Color(0xFFF2D4D4),
-    cardSage: Color(0xFFD4E2D0),
-    cardYellow: Color(0xFFF5E6A8),
-    cardForest: Color(0xFF3D5A45),
+    accentLavender: CelestialColorsLight.accent,
+    onPrimary: CelestialColorsLight.onButton,
+    buttonPrimary: CelestialColorsLight.button,
+    cardPink: Color(0xFFF2E0F5),
+    cardSage: Color(0xFFE8F0E4),
+    cardYellow: Color(0xFFFFF3CC),
+    cardForest: Color(0xFF2D6B52),
   );
 
   static const dark = AppColors(
-    background: Color(0xFF1A1A18),
-    surface: Color(0xFF242420),
-    surfaceElevated: Color(0xFF2E2E28),
-    primary: Color(0xFF8FB396),
-    primarySoft: Color(0xFF3D5A45),
-    secondary: Color(0xFFC9A0A0),
-    textPrimary: Color(0xFFF5F0E8),
-    textSecondary: Color(0xFFB8B2A8),
-    textMuted: Color(0xFF7A756C),
-    border: Color(0xFF3A3A34),
+    background: CelestialColors.background,
+    surface: CelestialColors.surface,
+    surfaceElevated: CelestialColors.surfaceContainerHigh,
+    primary: CelestialColors.accent,
+    primarySoft: CelestialColors.selectedFill,
+    secondary: CelestialColors.secondary,
+    textPrimary: CelestialColors.onSurface,
+    textSecondary: CelestialColors.onSurfaceVariant,
+    textMuted: CelestialColors.outline,
+    border: CelestialColors.outlineVariant,
     success: Color(0xFF8FB396),
-    warning: Color(0xFFE8A84C),
+    warning: CelestialColors.tertiary,
     accentBlue: Color(0xFF5A6078),
-    accentLavender: Color(0xFF8A7070),
-    cardPink: Color(0xFF5A4040),
-    cardSage: Color(0xFF3D5A45),
+    accentLavender: CelestialColors.accent,
+    onPrimary: CelestialColors.onButton,
+    buttonPrimary: CelestialColors.button,
+    cardPink: Color(0xFF1F4D3A),
+    cardSage: CelestialColors.surfaceContainer,
     cardYellow: Color(0xFF5A5230),
-    cardForest: Color(0xFF2A3D30),
+    cardForest: CelestialColors.surfaceContainerHighest,
   );
 
   @override
