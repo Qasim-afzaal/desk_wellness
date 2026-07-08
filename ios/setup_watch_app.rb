@@ -1,5 +1,11 @@
 #!/usr/bin/env ruby
 # Adds the Affirmly Watch App target to Runner.xcodeproj (run once from ios/).
+# NOTE: Watch target is currently DISABLED for iOS Simulator builds.
+# The watchapp2 product type breaks `flutter run` on iPhone Simulator unless
+# you also add a Watch Extension + paired Watch simulator.
+# To re-enable later, restore ios/Runner.xcodeproj from git and use Xcode's
+# File > New > Target > Watch App wizard instead of this script.
+#
 # Usage: cd ios && ruby setup_watch_app.rb
 
 require 'xcodeproj'
