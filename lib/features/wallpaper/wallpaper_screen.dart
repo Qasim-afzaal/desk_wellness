@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'dart:ui' as ui;
 
 import 'package:desk_wellness/core/models/editor_state.dart';
 import 'package:desk_wellness/core/theme/app_theme.dart';
+import 'package:desk_wellness/core/theme/celestial_theme.dart';
 import 'package:desk_wellness/core/widgets/animations/kindled_animations.dart';
+import 'package:desk_wellness/core/widgets/celestial_widgets.dart';
 import 'package:desk_wellness/core/widgets/kindled_widgets.dart';
 import 'package:desk_wellness/shared/providers/repository_providers.dart';
 import 'package:flutter/material.dart';
@@ -22,26 +26,39 @@ class WallpaperPreviewScreen extends ConsumerWidget {
       return const Scaffold(body: Center(child: Text('No draft to preview')));
     }
 
-    return KindledScreen(
-      title: 'WALLPAPER',
-      showBack: true,
-      child: Padding(
+    return CelestialScaffold(
+      appBar: const CelestialAppBar(title: 'Set Wallpaper', showBack: true),
+      body: Padding(
         padding: const EdgeInsets.all(AppSpacing.lg),
         child: Column(
           children: [
             Expanded(
               child: FloatingPhoneFrame(
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.black,
-                    borderRadius: BorderRadius.circular(AppRadius.xl),
-                  ),
-                  padding: const EdgeInsets.all(AppSpacing.md),
-                  child: Column(
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(AppRadius.xl),
+                  child: Stack(
+                    fit: StackFit.expand,
                     children: [
-                      Text('9:41', style: TextStyle(color: Colors.white.withValues(alpha: 0.9), fontSize: 18)),
-                      const SizedBox(height: AppSpacing.lg),
-                      Expanded(child: AffirmationCardFromDraft(draft: draft)),
+                      if (draft.backgroundImagePath != null && File(draft.backgroundImagePath!).existsSync())
+                        Image.file(File(draft.backgroundImagePath!), fit: BoxFit.cover)
+                      else
+                        Container(color: draft.background),
+                      Container(color: Colors.black.withValues(alpha: 0.35)),
+                      Padding(
+                        padding: const EdgeInsets.all(AppSpacing.lg),
+                        child: Column(
+                          children: [
+                            Text('9:41', style: TextStyle(color: Colors.white.withValues(alpha: 0.9), fontSize: 18)),
+                            const Spacer(),
+                            Text(
+                              draft.text,
+                              textAlign: TextAlign.center,
+                              style: CelestialTypography.displayAffirmation(),
+                            ),
+                            const Spacer(),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -51,15 +68,15 @@ class WallpaperPreviewScreen extends ConsumerWidget {
             Row(
               children: [
                 Expanded(
-                  child: KindledSecondaryButton(
-                    label: 'Share',
-                    icon: Icons.share_outlined,
+                  child: OutlinedButton.icon(
                     onPressed: () => shareAffirmation(context, draft.text),
+                    icon: const Icon(Icons.share_outlined),
+                    label: const Text('Share'),
                   ),
                 ),
                 const SizedBox(width: AppSpacing.sm),
                 Expanded(
-                  child: KindledPrimaryButton(
+                  child: CelestialPrimaryButton(
                     label: 'Save',
                     icon: Icons.save_outlined,
                     onPressed: () => context.push('/export'),
