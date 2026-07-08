@@ -10,6 +10,8 @@ class AffirmationDraft {
     this.textAlign = 'center',
     this.exportType = 'wallpaper',
     this.backgroundOverride,
+    this.backgroundImagePath,
+    this.backgroundImageUrl,
   });
 
   final String text;
@@ -18,6 +20,8 @@ class AffirmationDraft {
   final String textAlign;
   final String exportType;
   final Color? backgroundOverride;
+  final String? backgroundImagePath;
+  final String? backgroundImageUrl;
 
   Color get background => backgroundOverride ?? template.background;
 
@@ -28,6 +32,8 @@ class AffirmationDraft {
     String? textAlign,
     String? exportType,
     Color? backgroundOverride,
+    String? backgroundImagePath,
+    String? backgroundImageUrl,
   }) =>
       AffirmationDraft(
         text: text ?? this.text,
@@ -36,5 +42,7 @@ class AffirmationDraft {
         textAlign: textAlign ?? this.textAlign,
         exportType: exportType ?? this.exportType,
         backgroundOverride: backgroundOverride ?? this.backgroundOverride,
+        backgroundImagePath: backgroundImagePath ?? this.backgroundImagePath,
+        backgroundImageUrl: backgroundImageUrl ?? this.backgroundImageUrl,
       );
 }
