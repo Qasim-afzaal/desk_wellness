@@ -35,6 +35,8 @@ dependencies:
   flutter_tts: ^4.2.0
   home_widget: ^0.7.0
   watch_connectivity: ^0.2.9
+  http: ^1.4.0
+  cached_network_image: ^3.4.1
 
 dev_dependencies:
   flutter_test:
