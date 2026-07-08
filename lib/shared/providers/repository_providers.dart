@@ -1,5 +1,6 @@
 import 'package:desk_wellness/core/di/injection.dart';
 import 'package:desk_wellness/core/services/engagement_service.dart';
+import 'package:desk_wellness/core/services/image_search_service.dart';
 import 'package:desk_wellness/core/services/tts_service.dart';
 import 'package:desk_wellness/core/constants/affirmation_topics.dart';
 import 'package:desk_wellness/core/constants/app_goals.dart';
@@ -22,6 +23,7 @@ final creationRepositoryProvider = Provider((_) => getIt<CreationRepository>());
 final manifestRepositoryProvider = Provider((_) => getIt<ManifestRepository>());
 final ttsServiceProvider = Provider((_) => getIt<TtsService>());
 final engagementServiceProvider = Provider((_) => getIt<EngagementService>());
+final imageSearchServiceProvider = Provider((_) => getIt<ImageSearchService>());
 final topicMixServiceProvider = Provider((_) => getIt<TopicMixService>());
 final themeSelectionServiceProvider = Provider((_) => getIt<ThemeSelectionService>());
 final widgetServiceProvider = Provider((_) => getIt<WidgetService>());
