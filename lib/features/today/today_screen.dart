@@ -1,11 +1,11 @@
 import 'package:desk_wellness/core/constants/affirmation_categories.dart';
 import 'package:desk_wellness/core/di/injection.dart';
-import 'package:desk_wellness/core/models/affirmation_draft.dart';
 import 'package:desk_wellness/core/models/affirmation_template.dart';
-import 'package:desk_wellness/core/models/editor_state.dart';
 import 'package:desk_wellness/core/services/tts_service.dart';
 import 'package:desk_wellness/core/services/widget_service.dart';
 import 'package:desk_wellness/core/theme/app_theme.dart';
+import 'package:desk_wellness/core/theme/celestial_theme.dart';
+import 'package:desk_wellness/core/widgets/celestial_widgets.dart';
 import 'package:desk_wellness/core/widgets/animations/kindled_animations.dart';
 import 'package:desk_wellness/core/widgets/kindled_widgets.dart';
 import 'package:desk_wellness/database/app_database.dart';
@@ -14,7 +14,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:desk_wellness/core/utils/platform_native.dart';
 import 'package:desk_wellness/core/utils/share_utils.dart';
 
@@ -92,33 +91,56 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final c = context.colors;
+    final brightness = Theme.of(context).brightness;
     final feedAsync = ref.watch(affirmationFeedProvider(_category));
     final themeIdAsync = ref.watch(selectedThemeIdProvider);
     final streakAsync = ref.watch(engagementStreakProvider);
 
-    return Scaffold(
-      backgroundColor: context.colors.background,
+    return CelestialScaffold(
       body: SafeArea(
         child: Column(
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.md, AppSpacing.sm, AppSpacing.lg, 0),
+              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
               child: Row(
                 children: [
-                  Text(
-                    'Change your mindset',
-                    style: GoogleFonts.cormorantGaramond(
-                      fontSize: 22,
-                      fontWeight: FontWeight.w700,
-                      color: context.colors.textPrimary,
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Affirmly',
+                        style: CelestialTypography.labelCaps(
+                          color: CelestialPalette.tertiary(brightness),
+                          brightness: brightness,
+                        ),
+                      ),
+                      Text(
+                        'Daily affirmations',
+                        style: CelestialTypography.headlineLg(brightness: brightness).copyWith(fontSize: 22),
+                      ),
+                    ],
                   ),
                   const Spacer(),
                   streakAsync.when(
                     data: (s) => s > 0
-                        ? Chip(
-                            avatar: Icon(Icons.local_fire_department, size: 16, color: context.colors.warning),
-                            label: Text('$s'),
+                        ? GlassPanel(
+                            radius: AppRadius.pill,
+                            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Icon(Icons.local_fire_department, size: 16, color: CelestialPalette.tertiary(brightness)),
+                                const SizedBox(width: 4),
+                                Text(
+                                  '$s',
+                                  style: CelestialTypography.labelCaps(
+                                    color: c.textPrimary,
+                                    brightness: brightness,
+                                  ),
+                                ),
+                              ],
+                            ),
                           )
                         : const SizedBox.shrink(),
                     loading: () => const SizedBox.shrink(),
@@ -127,6 +149,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                 ],
               ),
             ),
+            const SizedBox(height: AppSpacing.sm),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg),
               child: SingleChildScrollView(
@@ -136,10 +159,10 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                     final active = tab == _category;
                     return Padding(
                       padding: const EdgeInsets.only(right: AppSpacing.sm),
-                      child: FilterChip(
-                        label: Text(AffirmationCategories.label(tab)),
+                      child: CelestialPillChip(
+                        label: AffirmationCategories.label(tab),
                         selected: active,
-                        onSelected: (_) {
+                        onTap: () {
                           setState(() {
                             _category = tab;
                             _pageIndex = 0;
@@ -190,11 +213,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                             onThemes: () => context.go('/templates'),
                             onExplore: () => context.push('/explore'),
                             onProfile: () => context.go('/profile'),
-                            onWallpaper: () {
-                              ref.read(editorDraftProvider.notifier).state =
-                                  AffirmationDraft(text: item.content, template: theme);
-                              context.push('/wallpaper/preview');
-                            },
+                            onWallpaper: () => context.go('/visual'),
                           );
                         },
                       );
@@ -243,103 +262,78 @@ class _IamAffirmationCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final c = context.colors;
+    final brightness = Theme.of(context).brightness;
     final onDark = theme.background.computeLuminance() < 0.45;
-    final textColor = onDark ? Colors.white : const Color(0xFF1C1C1C);
-    final overlay = onDark ? Colors.white24 : Colors.black12;
+    final textColor = onDark ? CelestialPalette.onSurface(brightness) : c.textPrimary;
 
     return Padding(
       padding: const EdgeInsets.fromLTRB(AppSpacing.lg, 0, AppSpacing.lg, AppSpacing.md),
       child: Stack(
         children: [
-          Container(
-            width: double.infinity,
-            decoration: BoxDecoration(
-              color: theme.background,
-              borderRadius: BorderRadius.circular(AppRadius.xl),
-              border: Border.all(color: overlay, width: 8),
-            ),
+          GlassPanel(
+            glow: true,
+            radius: AppRadius.xl,
             padding: const EdgeInsets.all(AppSpacing.xl),
-            child: Column(
-              children: [
-                const SizedBox(height: AppSpacing.xl),
-                Expanded(
-                  child: Center(
-                    child: Text(
-                      item.content,
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.cormorantGaramond(
-                        fontSize: 34,
-                        fontWeight: FontWeight.w600,
-                        height: 1.35,
-                        color: textColor,
+            child: DecoratedBox(
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(AppRadius.xl - 4),
+                gradient: CelestialGradients.cardGlow,
+              ),
+              child: SizedBox(
+                width: double.infinity,
+                height: double.infinity,
+                child: Column(
+                  children: [
+                    const SizedBox(height: AppSpacing.xl),
+                    Icon(Icons.auto_awesome, color: c.buttonPrimary, size: 32),
+                    const SizedBox(height: AppSpacing.md),
+                    Expanded(
+                      child: Center(
+                        child: Text(
+                          item.content,
+                          textAlign: TextAlign.center,
+                          style: CelestialTypography.displayAffirmation(color: textColor, brightness: brightness),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    _CircleAction(
-                      icon: Icons.favorite_border,
-                      activeIcon: Icons.favorite,
-                      active: item.isFavorite,
-                      onTap: onFavorite,
-                      color: textColor,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        _CircleAction(
+                          icon: Icons.favorite_border,
+                          activeIcon: Icons.favorite,
+                          active: item.isFavorite,
+                          onTap: onFavorite,
+                          color: c.buttonPrimary,
+                        ),
+                        const SizedBox(width: AppSpacing.lg),
+                        _CircleAction(icon: Icons.ios_share, onTap: onShare, color: c.textPrimary),
+                        const SizedBox(width: AppSpacing.lg),
+                        _CircleAction(
+                          icon: speaking ? Icons.stop : Icons.volume_up_outlined,
+                          onTap: onListen,
+                          color: CelestialPalette.tertiary(brightness),
+                        ),
+                      ],
                     ),
-                    const SizedBox(width: AppSpacing.lg),
-                    _CircleAction(icon: Icons.ios_share, onTap: onShare, color: textColor),
-                    const SizedBox(width: AppSpacing.lg),
-                    _CircleAction(
-                      icon: speaking ? Icons.stop : Icons.volume_up_outlined,
-                      onTap: onListen,
-                      color: textColor,
+                    const SizedBox(height: AppSpacing.lg),
+                    CelestialPrimaryButton(
+                      label: 'Practice',
+                      icon: Icons.self_improvement_outlined,
+                      expanded: false,
+                      onPressed: onPractice,
                     ),
+                    const SizedBox(height: AppSpacing.md),
                   ],
                 ),
-                const SizedBox(height: AppSpacing.lg),
-                Material(
-                  color: overlay,
-                  borderRadius: BorderRadius.circular(AppRadius.pill),
-                  child: InkWell(
-                    onTap: onPractice,
-                    borderRadius: BorderRadius.circular(AppRadius.pill),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: AppSpacing.lg, vertical: AppSpacing.sm + 2),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(Icons.self_improvement_outlined, color: textColor, size: 20),
-                          const SizedBox(width: AppSpacing.sm),
-                          Text('Practice', style: TextStyle(color: textColor, fontWeight: FontWeight.w600)),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
-                const SizedBox(height: AppSpacing.md),
-              ],
+              ),
             ),
           ),
-          Positioned(
-            top: 12,
-            left: 12,
-            child: _FloatingIconButton(icon: Icons.person_outline, onTap: onProfile),
-          ),
-          Positioned(
-            bottom: 88,
-            left: 12,
-            child: _FloatingIconButton(icon: Icons.grid_view, onTap: onExplore),
-          ),
-          Positioned(
-            bottom: 88,
-            right: 12,
-            child: _FloatingIconButton(icon: Icons.format_paint_outlined, onTap: onThemes),
-          ),
-          Positioned(
-            top: 12,
-            right: 12,
-            child: _FloatingIconButton(icon: Icons.wallpaper_outlined, onTap: onWallpaper),
-          ),
+          Positioned(top: 12, left: 12, child: _FloatingIconButton(icon: Icons.person_outline, onTap: onProfile)),
+          Positioned(bottom: 88, left: 12, child: _FloatingIconButton(icon: Icons.grid_view, onTap: onExplore)),
+          Positioned(bottom: 88, right: 12, child: _FloatingIconButton(icon: Icons.format_paint_outlined, onTap: onThemes)),
+          Positioned(top: 12, right: 12, child: _FloatingIconButton(icon: Icons.wallpaper_outlined, onTap: onWallpaper)),
         ],
       ),
     );
@@ -354,16 +348,14 @@ class _FloatingIconButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.black26,
-      shape: const CircleBorder(),
-      clipBehavior: Clip.antiAlias,
+    final c = context.colors;
+    return GlassPanel(
+      radius: AppRadius.pill,
+      padding: const EdgeInsets.all(10),
       child: InkWell(
         onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(10),
-          child: Icon(icon, color: Colors.white, size: 20),
-        ),
+        customBorder: const CircleBorder(),
+        child: Icon(icon, color: c.textPrimary, size: 20),
       ),
     );
   }
