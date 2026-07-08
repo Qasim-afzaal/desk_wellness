@@ -12,10 +12,14 @@ import 'package:desk_wellness/features/templates/templates_screen.dart';
 import 'package:desk_wellness/features/today/today_screen.dart';
 import 'package:desk_wellness/features/explore/explore_topics_screen.dart';
 import 'package:desk_wellness/features/practice/practice_screen.dart';
+import 'package:desk_wellness/features/wallpaper/canvas_editor_screen.dart';
+import 'package:desk_wellness/features/wallpaper/wallpaper_search_screen.dart';
 import 'package:desk_wellness/features/wallpaper/wallpaper_screen.dart';
 import 'package:desk_wellness/features/widgets/widget_setup_screen.dart';
 import 'package:desk_wellness/features/watch/watch_face_screen.dart';
 import 'package:desk_wellness/core/theme/app_theme.dart';
+import 'package:desk_wellness/core/theme/celestial_theme.dart';
+import 'package:desk_wellness/core/widgets/celestial_widgets.dart';
 import 'package:desk_wellness/core/widgets/animations/kindled_animations.dart';
 import 'package:desk_wellness/shared/providers/repository_providers.dart';
 import 'package:flutter/material.dart';
@@ -52,6 +56,14 @@ final routerProvider = Provider<GoRouter>((ref) {
         builder: (context, state, navigationShell) => MainShell(navigationShell: navigationShell),
         branches: [
           StatefulShellBranch(routes: [GoRoute(path: '/today', builder: (_, __) => const TodayScreen())]),
+          StatefulShellBranch(
+            routes: [
+              GoRoute(
+                path: '/visual',
+                builder: (_, __) => const WallpaperSearchScreen(embeddedInShell: true),
+              ),
+            ],
+          ),
           StatefulShellBranch(routes: [GoRoute(path: '/templates', builder: (_, __) => const TemplatesScreen())]),
           StatefulShellBranch(routes: [GoRoute(path: '/saved', builder: (_, __) => const FavoritesScreen())]),
           StatefulShellBranch(routes: [GoRoute(path: '/profile', builder: (_, __) => const ProfileScreen())]),
@@ -70,6 +82,13 @@ final routerProvider = Provider<GoRouter>((ref) {
       ),
       GoRoute(path: '/widgets', builder: (_, __) => const WidgetSetupScreen()),
       GoRoute(path: '/watch', builder: (_, __) => const WatchFaceScreen()),
+      GoRoute(path: '/wallpaper/search', builder: (_, state) {
+        final extra = state.extra;
+        return WallpaperSearchScreen(
+          affirmationText: extra is String ? extra : null,
+        );
+      }),
+      GoRoute(path: '/canvas/editor', builder: (_, __) => const CanvasEditorScreen()),
       GoRoute(path: '/wallpaper/preview', builder: (_, __) => const WallpaperPreviewScreen()),
       GoRoute(path: '/export', builder: (_, __) => const ExportScreen()),
       GoRoute(path: '/manifest', builder: (_, __) => const ManifestScreen()),
@@ -90,17 +109,14 @@ class MainShell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final brightness = Theme.of(context).brightness;
     return Scaffold(
+      backgroundColor: CelestialPalette.background(brightness),
+      extendBody: true,
       body: navigationShell,
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: navigationShell.currentIndex,
-        onDestinationSelected: navigationShell.goBranch,
-        destinations: const [
-          NavigationDestination(icon: Icon(Icons.format_quote_outlined), selectedIcon: Icon(Icons.format_quote), label: 'Affirmations'),
-          NavigationDestination(icon: Icon(Icons.grid_view_outlined), selectedIcon: Icon(Icons.grid_view), label: 'Themes'),
-          NavigationDestination(icon: Icon(Icons.favorite_outline), selectedIcon: Icon(Icons.favorite), label: 'Favorites'),
-          NavigationDestination(icon: Icon(Icons.person_outline), selectedIcon: Icon(Icons.person), label: 'Profile'),
-        ],
+      bottomNavigationBar: CelestialBottomNav(
+        currentIndex: navigationShell.currentIndex,
+        onTap: navigationShell.goBranch,
       ),
     );
   }
@@ -112,7 +128,7 @@ class _SplashScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     ref.listen(settingsStreamProvider, (_, __) {});
-    return Scaffold(
+    return CelestialScaffold(
       body: AmbientBackground(
         child: Center(
           child: Column(
@@ -120,10 +136,7 @@ class _SplashScreen extends ConsumerWidget {
             children: [
               KindledLottie(asset: KindledAssets.sunrise, width: 160, height: 160),
               const SizedBox(height: AppSpacing.lg),
-              Text(
-                'Affirmly',
-                style: Theme.of(context).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800),
-              ),
+              Text('Affirmly', style: CelestialTypography.headlineLg()),
               const SizedBox(height: AppSpacing.md),
               KindledLottie(asset: KindledAssets.loadingDots, width: 72, height: 28),
             ],
