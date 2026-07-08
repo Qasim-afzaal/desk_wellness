@@ -1,12 +1,17 @@
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
 
 @immutable
 class AppGoal {
-  const AppGoal({required this.id, required this.title, required this.icon, required this.prompt});
+  const AppGoal({
+    required this.id,
+    required this.title,
+    required this.icon,
+    required this.prompt,
+  });
 
   final String id;
   final String title;
-  final String icon;
+  final IconData icon;
   final String prompt;
 }
 
@@ -15,49 +20,49 @@ abstract final class AppGoals {
     AppGoal(
       id: 'confidence',
       title: 'Confidence',
-      icon: '✨',
+      icon: Icons.auto_awesome_outlined,
       prompt: 'I am becoming more confident every day.',
     ),
     AppGoal(
       id: 'abundance',
       title: 'Abundance',
-      icon: '💫',
+      icon: Icons.diamond_outlined,
       prompt: 'Abundance flows to me with ease.',
     ),
     AppGoal(
       id: 'love',
       title: 'Self-love',
-      icon: '💗',
+      icon: Icons.favorite_border,
       prompt: 'I love and accept myself fully.',
     ),
     AppGoal(
       id: 'career',
       title: 'Career',
-      icon: '🚀',
+      icon: Icons.rocket_launch_outlined,
       prompt: 'I attract opportunities aligned with my purpose.',
     ),
     AppGoal(
       id: 'health',
       title: 'Health',
-      icon: '🌿',
+      icon: Icons.spa_outlined,
       prompt: 'My body is strong, calm, and energized.',
     ),
     AppGoal(
       id: 'peace',
       title: 'Inner peace',
-      icon: '🕊️',
+      icon: Icons.self_improvement_outlined,
       prompt: 'I choose peace in every moment.',
     ),
     AppGoal(
       id: 'creativity',
       title: 'Creativity',
-      icon: '🎨',
+      icon: Icons.palette_outlined,
       prompt: 'Creative ideas flow through me freely.',
     ),
     AppGoal(
       id: 'relationships',
       title: 'Relationships',
-      icon: '🤝',
+      icon: Icons.people_outline,
       prompt: 'I attract loving, supportive connections.',
     ),
   ];
