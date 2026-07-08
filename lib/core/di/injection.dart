@@ -1,4 +1,5 @@
 import 'package:desk_wellness/core/services/engagement_service.dart';
+import 'package:desk_wellness/core/services/image_search_service.dart';
 import 'package:desk_wellness/core/services/notification_service.dart';
 import 'package:desk_wellness/core/services/theme_selection_service.dart';
 import 'package:desk_wellness/core/services/topic_mix_service.dart';
@@ -27,6 +28,7 @@ Future<void> configureDependencies() async {
   getIt.registerLazySingleton<NotificationService>(() => NotificationService());
   getIt.registerLazySingleton<TtsService>(() => TtsService());
   getIt.registerLazySingleton<EngagementService>(() => EngagementService());
+  getIt.registerLazySingleton<ImageSearchService>(() => ImageSearchService());
   getIt.registerLazySingleton<TopicMixService>(() => TopicMixService());
   getIt.registerLazySingleton<ThemeSelectionService>(() => ThemeSelectionService());
   getIt.registerLazySingleton<WidgetService>(() => WidgetService());
