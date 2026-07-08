@@ -111,16 +111,39 @@ class EmptyState extends StatelessWidget {
 
 ThemeData buildAppTheme({required Brightness brightness}) {
   final colors = brightness == Brightness.dark ? AppColors.dark : AppColors.light;
-  final base = ThemeData(useMaterial3: true, brightness: brightness, colorSchemeSeed: colors.primary);
-  return base.copyWith(
+  final colorScheme = ColorScheme(
+    brightness: brightness,
+    primary: colors.buttonPrimary,
+    onPrimary: colors.onPrimary,
+    primaryContainer: colors.primarySoft,
+    onPrimaryContainer: colors.textPrimary,
+    secondary: colors.secondary,
+    onSecondary: colors.onPrimary,
+    surface: colors.surface,
+    onSurface: colors.textPrimary,
+    onSurfaceVariant: colors.textSecondary,
+    outline: colors.border,
+    error: const Color(0xFFE57373),
+    onError: Colors.white,
+  );
+  final displayFont = brightness == Brightness.dark
+      ? GoogleFonts.playfairDisplayTextTheme()
+      : GoogleFonts.interTextTheme();
+  return ThemeData(
+    useMaterial3: true,
+    brightness: brightness,
+    colorScheme: colorScheme,
     scaffoldBackgroundColor: colors.background,
     extensions: [colors],
-    textTheme: GoogleFonts.interTextTheme(base.textTheme).apply(
-      bodyColor: colors.textPrimary,
-      displayColor: colors.textPrimary,
-    ),
+    textTheme: displayFont.apply(bodyColor: colors.textPrimary, displayColor: colors.textPrimary).copyWith(
+          titleLarge: GoogleFonts.playfairDisplay(fontWeight: FontWeight.w700, color: colors.textPrimary, fontSize: 24),
+          titleMedium: GoogleFonts.playfairDisplay(fontWeight: FontWeight.w600, color: colors.textPrimary, fontSize: 18),
+          bodyLarge: GoogleFonts.inter(color: colors.textSecondary, fontSize: 16),
+          bodyMedium: GoogleFonts.inter(color: colors.textSecondary, fontSize: 14),
+          labelLarge: GoogleFonts.inter(fontWeight: FontWeight.w600, color: colors.textPrimary),
+        ),
     appBarTheme: AppBarTheme(
-      backgroundColor: colors.background,
+      backgroundColor: colors.surface.withValues(alpha: brightness == Brightness.dark ? 0.6 : 0.9),
       foregroundColor: colors.textPrimary,
       elevation: 0,
       centerTitle: false,
@@ -128,12 +151,78 @@ ThemeData buildAppTheme({required Brightness brightness}) {
     cardTheme: CardThemeData(
       color: colors.surface,
       elevation: 0,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.lg)),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(AppRadius.lg),
+        side: BorderSide(color: colors.border.withValues(alpha: 0.5)),
+      ),
     ),
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: colors.surface,
+      hintStyle: TextStyle(color: colors.textMuted),
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppRadius.pill),
+        borderSide: BorderSide(color: colors.border),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppRadius.pill),
+        borderSide: BorderSide(color: colors.border),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppRadius.pill),
+        borderSide: BorderSide(color: colors.buttonPrimary, width: 2),
+      ),
+    ),
+    listTileTheme: ListTileThemeData(
+      iconColor: colors.primary,
+      textColor: colors.textPrimary,
+    ),
+    iconTheme: IconThemeData(color: colors.primary),
+    dividerColor: colors.border,
     navigationBarTheme: NavigationBarThemeData(
       backgroundColor: colors.surface,
       indicatorColor: colors.primarySoft,
       labelTextStyle: WidgetStatePropertyAll(TextStyle(fontSize: 12, color: colors.textSecondary)),
+    ),
+    filledButtonTheme: FilledButtonThemeData(
+      style: FilledButton.styleFrom(
+        backgroundColor: colors.buttonPrimary,
+        foregroundColor: colors.onPrimary,
+        disabledBackgroundColor: colors.buttonPrimary.withValues(alpha: 0.35),
+        disabledForegroundColor: colors.onPrimary.withValues(alpha: 0.6),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.pill)),
+        minimumSize: const Size(0, 54),
+      ),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+      style: OutlinedButton.styleFrom(
+        foregroundColor: colors.textPrimary,
+        side: BorderSide(color: colors.border),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.pill)),
+        minimumSize: const Size(0, 54),
+      ),
+    ),
+    chipTheme: ChipThemeData(
+      backgroundColor: colors.surface,
+      selectedColor: colors.buttonPrimary,
+      checkmarkColor: colors.onPrimary,
+      deleteIconColor: colors.onPrimary,
+      labelStyle: TextStyle(color: colors.textSecondary, fontWeight: FontWeight.w600),
+      secondarySelectedColor: colors.buttonPrimary,
+      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+      side: BorderSide(color: colors.border),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.pill)),
+    ),
+    snackBarTheme: SnackBarThemeData(
+      backgroundColor: colors.surfaceElevated,
+      contentTextStyle: TextStyle(color: colors.textPrimary),
+      behavior: SnackBarBehavior.floating,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.md)),
+    ),
+    progressIndicatorTheme: ProgressIndicatorThemeData(color: colors.buttonPrimary),
+    floatingActionButtonTheme: FloatingActionButtonThemeData(
+      backgroundColor: colors.buttonPrimary,
+      foregroundColor: colors.onPrimary,
     ),
   );
 }
