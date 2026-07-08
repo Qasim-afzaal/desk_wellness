@@ -1,6 +1,8 @@
 import 'package:desk_wellness/core/models/affirmation_draft.dart';
 import 'package:desk_wellness/core/models/affirmation_template.dart';
 import 'package:desk_wellness/core/theme/app_theme.dart';
+import 'package:desk_wellness/core/theme/celestial_theme.dart';
+import 'package:desk_wellness/core/widgets/celestial_widgets.dart';
 import 'package:desk_wellness/core/widgets/animations/kindled_animations.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -176,27 +178,30 @@ class KindledScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    final c = context.colors;
+    final brightness = Theme.of(context).brightness;
+
+    return CelestialScaffold(
       body: SafeArea(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.fromLTRB(AppSpacing.md, AppSpacing.sm, AppSpacing.md, AppSpacing.md),
+              padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, AppSpacing.md),
               child: Row(
                 children: [
                   if (showBack)
                     IconButton(
-                      icon: const Icon(Icons.arrow_back),
+                      icon: Icon(Icons.arrow_back, color: c.textPrimary),
                       onPressed: () => Navigator.of(context).maybePop(),
                     ),
                   Expanded(
                     child: Text(
-                      title,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.8,
-                          ),
+                      title.toUpperCase(),
+                      style: CelestialTypography.labelCaps(
+                        color: c.primary,
+                        brightness: brightness,
+                      ),
                     ),
                   ),
                   if (actions != null) ...actions!,
@@ -233,9 +238,9 @@ class FilterTabs extends StatelessWidget {
               label: Text(tab[0].toUpperCase() + tab.substring(1)),
               selected: active,
               onSelected: (_) => onSelected(tab),
-              selectedColor: c.primary,
+              selectedColor: c.buttonPrimary,
               labelStyle: TextStyle(
-                color: active ? Colors.white : c.textSecondary,
+                color: active ? c.onPrimary : c.textSecondary,
                 fontWeight: FontWeight.w600,
               ),
               backgroundColor: c.surface,
@@ -264,16 +269,18 @@ class KindledPrimaryButton extends StatelessWidget {
       child: FilledButton(
         onPressed: onPressed,
         style: FilledButton.styleFrom(
-          backgroundColor: c.primary,
-          foregroundColor: Colors.white,
+          backgroundColor: c.buttonPrimary,
+          foregroundColor: c.onPrimary,
+          disabledBackgroundColor: c.buttonPrimary.withValues(alpha: 0.35),
+          disabledForegroundColor: c.onPrimary.withValues(alpha: 0.6),
           minimumSize: const Size(0, 54),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.md)),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppRadius.pill)),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (icon != null) ...[Icon(icon, size: 20), const SizedBox(width: AppSpacing.sm)],
-            Text(label, style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 16)),
+            Text(label, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
           ],
         ),
       ),
