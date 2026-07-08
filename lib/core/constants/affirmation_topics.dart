@@ -1,4 +1,4 @@
-import 'package:meta/meta.dart';
+import 'package:flutter/material.dart';
 
 @immutable
 class AffirmationTopic {
@@ -12,7 +12,7 @@ class AffirmationTopic {
 
   final String id;
   final String title;
-  final String icon;
+  final IconData icon;
   final List<String> categories;
   final bool isFree;
 }
@@ -22,49 +22,49 @@ abstract final class AffirmationTopics {
     AffirmationTopic(
       id: 'stress',
       title: 'Stress & anxiety',
-      icon: '🌊',
+      icon: Icons.waves_outlined,
       categories: ['calm'],
     ),
     AffirmationTopic(
       id: 'positive',
       title: 'Positive thinking',
-      icon: '🎈',
+      icon: Icons.lightbulb_outline,
       categories: ['manifest', 'bold'],
     ),
     AffirmationTopic(
       id: 'health',
       title: 'Health',
-      icon: '🍎',
+      icon: Icons.favorite_outline,
       categories: ['calm', 'focus'],
     ),
     AffirmationTopic(
       id: 'self_love',
       title: 'Love yourself',
-      icon: '💗',
+      icon: Icons.self_improvement_outlined,
       categories: ['love'],
     ),
     AffirmationTopic(
       id: 'abundance',
       title: 'Abundance',
-      icon: '✨',
+      icon: Icons.diamond_outlined,
       categories: ['abundance'],
     ),
     AffirmationTopic(
       id: 'confidence',
       title: 'Confidence',
-      icon: '🦁',
+      icon: Icons.auto_awesome_outlined,
       categories: ['bold', 'manifest'],
     ),
     AffirmationTopic(
       id: 'relationships',
       title: 'Relationships',
-      icon: '🤝',
+      icon: Icons.people_outline,
       categories: ['love'],
     ),
     AffirmationTopic(
       id: 'focus',
       title: 'Focus & work',
-      icon: '🎯',
+      icon: Icons.track_changes_outlined,
       categories: ['focus'],
     ),
   ];
