@@ -85,8 +85,8 @@ class _TemplatesScreenState extends ConsumerState<TemplatesScreen> {
                         }
                         setState(() => _tab = tab);
                       },
-                      selectedColor: c.primary,
-                      labelStyle: TextStyle(color: active ? Colors.white : c.textSecondary, fontWeight: FontWeight.w600),
+                      selectedColor: c.buttonPrimary,
+                      labelStyle: TextStyle(color: active ? c.onPrimary : c.textSecondary, fontWeight: FontWeight.w600),
                     ),
                   );
                 }).toList(),
