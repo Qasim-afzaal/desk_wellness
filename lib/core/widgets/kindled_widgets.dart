@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:desk_wellness/core/models/affirmation_draft.dart';
 import 'package:desk_wellness/core/models/affirmation_template.dart';
 import 'package:desk_wellness/core/theme/app_theme.dart';
@@ -18,6 +20,8 @@ class AffirmationCard extends StatelessWidget {
     this.compact = false,
     this.showAccent = true,
     this.pulseAccent = false,
+    this.backgroundImagePath,
+    this.backgroundImageUrl,
   });
 
   final String text;
@@ -28,10 +32,14 @@ class AffirmationCard extends StatelessWidget {
   final bool compact;
   final bool showAccent;
   final bool pulseAccent;
+  final String? backgroundImagePath;
+  final String? backgroundImageUrl;
 
   @override
   Widget build(BuildContext context) {
-    final onDark = background.computeLuminance() < 0.45;
+    final hasImage = (backgroundImagePath != null && File(backgroundImagePath!).existsSync()) ||
+        (backgroundImageUrl != null && backgroundImageUrl!.isNotEmpty);
+    final onDark = hasImage || background.computeLuminance() < 0.45;
     final textColor = onDark ? Colors.white : const Color(0xFF1C1C1C);
 
     Alignment alignment;
@@ -47,6 +55,7 @@ class AffirmationCard extends StatelessWidget {
     final padding = compact ? AppSpacing.sm + 4 : AppSpacing.xl;
     final accentSize = compact ? 28.0 : 48.0;
     final accentGap = compact ? AppSpacing.sm : AppSpacing.lg;
+    final radius = BorderRadius.circular(compact ? AppRadius.md : AppRadius.xl);
 
     final textWidget = compact
         ? Text(
@@ -57,6 +66,9 @@ class AffirmationCard extends StatelessWidget {
               color: textColor,
               height: 1.3,
               fontSize: 15,
+              shadows: hasImage
+                  ? const [Shadow(blurRadius: 10, color: Colors.black54, offset: Offset(0, 1))]
+                  : null,
             ),
           )
         : Align(
@@ -68,16 +80,17 @@ class AffirmationCard extends StatelessWidget {
                 color: textColor,
                 height: 1.35,
                 fontSize: 24,
+                shadows: hasImage
+                    ? const [
+                        Shadow(blurRadius: 12, color: Colors.black54, offset: Offset(0, 2)),
+                        Shadow(blurRadius: 24, color: Colors.black38, offset: Offset(0, 4)),
+                      ]
+                    : null,
               ),
             ),
           );
 
-    return Container(
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: background,
-        borderRadius: BorderRadius.circular(compact ? AppRadius.md : AppRadius.xl),
-      ),
+    final content = Padding(
       padding: EdgeInsets.all(padding),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -95,6 +108,37 @@ class AffirmationCard extends StatelessWidget {
           ],
           if (compact) textWidget else Expanded(child: textWidget),
         ],
+      ),
+    );
+
+    return ClipRRect(
+      borderRadius: radius,
+      child: Container(
+        width: double.infinity,
+        decoration: BoxDecoration(
+          color: background,
+          borderRadius: radius,
+          image: backgroundImagePath != null && File(backgroundImagePath!).existsSync()
+              ? DecorationImage(
+                  image: FileImage(File(backgroundImagePath!)),
+                  fit: BoxFit.cover,
+                  colorFilter: ColorFilter.mode(
+                    Colors.black.withValues(alpha: hasImage ? 0.32 : 0),
+                    BlendMode.darken,
+                  ),
+                )
+              : backgroundImageUrl != null && backgroundImageUrl!.isNotEmpty
+                  ? DecorationImage(
+                      image: NetworkImage(backgroundImageUrl!),
+                      fit: BoxFit.cover,
+                      colorFilter: ColorFilter.mode(
+                        Colors.black.withValues(alpha: 0.32),
+                        BlendMode.darken,
+                      ),
+                    )
+                  : null,
+        ),
+        child: content,
       ),
     );
   }
@@ -133,6 +177,8 @@ class AffirmationCardFromDraft extends StatelessWidget {
       textAlign: draft.textAlign,
       compact: compact,
       showAccent: showAccent,
+      backgroundImagePath: draft.backgroundImagePath,
+      backgroundImageUrl: draft.backgroundImageUrl,
     );
   }
 }

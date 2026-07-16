@@ -1,10 +1,13 @@
 import 'package:desk_wellness/core/constants/affirmation_categories.dart';
 import 'package:desk_wellness/core/di/injection.dart';
 import 'package:desk_wellness/core/models/affirmation_template.dart';
+import 'package:desk_wellness/core/models/canvas_document.dart';
+import 'package:desk_wellness/core/models/editor_state.dart';
 import 'package:desk_wellness/core/services/tts_service.dart';
 import 'package:desk_wellness/core/services/widget_service.dart';
 import 'package:desk_wellness/core/theme/app_theme.dart';
 import 'package:desk_wellness/core/theme/celestial_theme.dart';
+import 'package:desk_wellness/core/widgets/app_logo.dart';
 import 'package:desk_wellness/core/widgets/celestial_widgets.dart';
 import 'package:desk_wellness/core/widgets/animations/kindled_animations.dart';
 import 'package:desk_wellness/core/widgets/kindled_widgets.dart';
@@ -15,7 +18,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import 'package:desk_wellness/core/utils/platform_native.dart';
-import 'package:desk_wellness/core/utils/share_utils.dart';
 
 class TodayScreen extends ConsumerStatefulWidget {
   const TodayScreen({super.key});
@@ -53,11 +55,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
 
   Future<void> _syncSurfaces(Affirmation item, AffirmationTemplate theme) async {
     final hex = WidgetService.colorToHex(theme.background.toARGB32());
-    await ref.read(widgetServiceProvider).updateAffirmation(
-          text: item.content,
-          backgroundHex: hex,
-          templateId: theme.id,
-        );
+    // Home-widget text is edited on Widgets & Watch — don't overwrite it while browsing.
     await ref.read(watchSyncServiceProvider).syncAffirmation(
           text: item.content,
           backgroundHex: hex,
@@ -89,6 +87,13 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
     }
   }
 
+  void _openCanvasEditor(Affirmation item) {
+    ref.read(canvasDocumentProvider.notifier).state = CanvasDocument(
+      affirmationText: item.content,
+    );
+    context.push('/canvas/editor');
+  }
+
   @override
   Widget build(BuildContext context) {
     final c = context.colors;
@@ -105,21 +110,10 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
               padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
               child: Row(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Affirmly',
-                        style: CelestialTypography.labelCaps(
-                          color: CelestialPalette.tertiary(brightness),
-                          brightness: brightness,
-                        ),
-                      ),
-                      Text(
-                        'Daily affirmations',
-                        style: CelestialTypography.headlineLg(brightness: brightness).copyWith(fontSize: 22),
-                      ),
-                    ],
+                  AffirfestingBrandMark(
+                    logoSize: 40,
+                    titleStyle: CelestialTypography.headlineLg(brightness: brightness).copyWith(fontSize: 20),
+                    subtitle: 'Daily affirmations',
                   ),
                   const Spacer(),
                   streakAsync.when(
@@ -207,10 +201,9 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
                             theme: theme,
                             speaking: _speaking && index == _pageIndex,
                             onFavorite: () => _toggleFavorite(item),
-                            onShare: () => shareAffirmation(context, item.content),
                             onListen: () => _speak(item.content),
                             onPractice: () => context.push('/practice', extra: item.content),
-                            onThemes: () => context.go('/templates'),
+                            onEdit: () => _openCanvasEditor(item),
                             onExplore: () => context.push('/explore'),
                             onProfile: () => context.go('/profile'),
                             onWallpaper: () => context.go('/visual'),
@@ -239,10 +232,9 @@ class _IamAffirmationCard extends StatelessWidget {
     required this.theme,
     required this.speaking,
     required this.onFavorite,
-    required this.onShare,
     required this.onListen,
     required this.onPractice,
-    required this.onThemes,
+    required this.onEdit,
     required this.onExplore,
     required this.onProfile,
     required this.onWallpaper,
@@ -252,10 +244,9 @@ class _IamAffirmationCard extends StatelessWidget {
   final AffirmationTemplate theme;
   final bool speaking;
   final VoidCallback onFavorite;
-  final VoidCallback onShare;
   final VoidCallback onListen;
   final VoidCallback onPractice;
-  final VoidCallback onThemes;
+  final VoidCallback onEdit;
   final VoidCallback onExplore;
   final VoidCallback onProfile;
   final VoidCallback onWallpaper;
@@ -307,9 +298,7 @@ class _IamAffirmationCard extends StatelessWidget {
                           onTap: onFavorite,
                           color: c.buttonPrimary,
                         ),
-                        const SizedBox(width: AppSpacing.lg),
-                        _CircleAction(icon: Icons.ios_share, onTap: onShare, color: c.textPrimary),
-                        const SizedBox(width: AppSpacing.lg),
+                        const SizedBox(width: AppSpacing.xl),
                         _CircleAction(
                           icon: speaking ? Icons.stop : Icons.volume_up_outlined,
                           onTap: onListen,
@@ -332,7 +321,7 @@ class _IamAffirmationCard extends StatelessWidget {
           ),
           Positioned(top: 12, left: 12, child: _FloatingIconButton(icon: Icons.person_outline, onTap: onProfile)),
           Positioned(bottom: 88, left: 12, child: _FloatingIconButton(icon: Icons.grid_view, onTap: onExplore)),
-          Positioned(bottom: 88, right: 12, child: _FloatingIconButton(icon: Icons.format_paint_outlined, onTap: onThemes)),
+          Positioned(bottom: 88, right: 12, child: _FloatingIconButton(icon: Icons.edit_outlined, onTap: onEdit)),
           Positioned(top: 12, right: 12, child: _FloatingIconButton(icon: Icons.wallpaper_outlined, onTap: onWallpaper)),
         ],
       ),

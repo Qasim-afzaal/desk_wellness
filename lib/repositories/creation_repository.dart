@@ -41,7 +41,8 @@ class CreationRepository {
 
   Future<List<int>> weeklyActivity() async {
     final now = DateTime.now();
-    final start = DateTime(now.year, now.month, now.day).subtract(const Duration(days: 6));
+    final today = DateTime(now.year, now.month, now.day);
+    final start = today.subtract(Duration(days: now.weekday - DateTime.monday));
     final rows = await (_db.select(_db.savedCreations)
           ..where((t) => t.createdAt.isBiggerOrEqualValue(start)))
         .get();

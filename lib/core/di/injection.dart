@@ -12,6 +12,7 @@ import 'package:desk_wellness/repositories/creation_repository.dart';
 import 'package:desk_wellness/repositories/manifest_repository.dart';
 import 'package:desk_wellness/repositories/reminder_repository.dart';
 import 'package:desk_wellness/repositories/settings_repository.dart';
+import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
 
 final getIt = GetIt.instance;
@@ -44,4 +45,10 @@ Future<void> configureDependencies() async {
       getIt<AffirmationRepository>(),
     ),
   );
+
+  // Fire-and-forget so a scheduler failure never blocks first frame.
+  // ignore: unawaited_futures
+  getIt<ReminderRepository>().syncScheduledNotifications().catchError((Object e) {
+    debugPrint('Reminder sync skipped: $e');
+  });
 }

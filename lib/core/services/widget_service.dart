@@ -43,8 +43,11 @@ class WidgetService {
 
   Future<void> updateAffirmation({
     required String text,
-    required String backgroundHex,
     required String templateId,
+    String? backgroundHex,
+    String? textColorHex,
+    String? accentHex,
+    bool? showBrand,
   }) async {
     if (!isMobileNative) return;
     await init();
@@ -52,8 +55,19 @@ class WidgetService {
 
     try {
       await HomeWidget.saveWidgetData<String>('affirmation_text', text);
-      await HomeWidget.saveWidgetData<String>('background_hex', backgroundHex);
       await HomeWidget.saveWidgetData<String>('template_id', templateId);
+      if (backgroundHex != null) {
+        await HomeWidget.saveWidgetData<String>('background_hex', backgroundHex);
+      }
+      if (textColorHex != null) {
+        await HomeWidget.saveWidgetData<String>('text_color_hex', textColorHex);
+      }
+      if (accentHex != null) {
+        await HomeWidget.saveWidgetData<String>('accent_hex', accentHex);
+      }
+      if (showBrand != null) {
+        await HomeWidget.saveWidgetData<bool>('show_brand', showBrand);
+      }
       await HomeWidget.updateWidget(
         androidName: androidProvider,
         iOSName: iosName,

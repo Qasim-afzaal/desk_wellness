@@ -65,7 +65,7 @@ ios_target.add_dependency(watch_target)
 ios_team = ios_target.build_configurations.first.build_settings['DEVELOPMENT_TEAM']
 
 watch_target.build_configurations.each do |config|
-  config.build_settings['INFOPLIST_KEY_CFBundleDisplayName'] = 'Affirmly'
+  config.build_settings['INFOPLIST_KEY_CFBundleDisplayName'] = 'Affirfesting'
   config.build_settings['INFOPLIST_KEY_WKCompanionAppBundleIdentifier'] = IOS_BUNDLE
   config.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = WATCH_BUNDLE
   config.build_settings['SWIFT_VERSION'] = '5.0'

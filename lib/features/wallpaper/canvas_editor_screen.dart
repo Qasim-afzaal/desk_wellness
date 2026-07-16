@@ -26,7 +26,6 @@ class _CanvasEditorScreenState extends ConsumerState<CanvasEditorScreen> {
   String _toolTab = 'text';
   String? _selectedLayerId;
 
-  static const _categories = ['Inner Peace', 'Gratitude', 'Abundance', 'Focus', 'Healing'];
   static const _fonts = [
     ('playfair', 'Playfair'),
     ('nunito', 'Nunito'),
@@ -88,6 +87,7 @@ class _CanvasEditorScreenState extends ConsumerState<CanvasEditorScreen> {
       fontStyle: _doc.fontStyle,
       backgroundOverride: CelestialColors.primaryContainer,
       backgroundImagePath: _doc.backgroundImagePath,
+      backgroundImageUrl: _doc.backgroundImageUrl,
     );
     context.push('/wallpaper/preview');
   }
@@ -101,10 +101,9 @@ class _CanvasEditorScreenState extends ConsumerState<CanvasEditorScreen> {
       backgroundColor: CelestialColors.background,
       extendBodyBehindAppBar: true,
       appBar: CelestialAppBar(
-        title: 'I am',
+        title: 'Edit affirmation',
         showBack: true,
         actions: [
-          IconButton(icon: const Icon(Icons.share_outlined), onPressed: _exportToWallpaper),
           IconButton(icon: const Icon(Icons.check_circle_outline), onPressed: _exportToWallpaper),
         ],
       ),
@@ -138,12 +137,10 @@ class _CanvasEditorScreenState extends ConsumerState<CanvasEditorScreen> {
             doc: doc,
             toolTab: _toolTab,
             textController: _textController,
-            categories: _categories,
             fonts: _fonts,
             shapes: _shapes,
             icons: _icons,
             onTab: (t) => setState(() => _toolTab = t),
-            onCategory: (c) => _update(doc.copyWith(category: c)),
             onTextChanged: (t) => _update(doc.copyWith(affirmationText: t)),
             onFont: (f) => _update(doc.copyWith(fontStyle: f)),
             onAlign: (a) => _update(doc.copyWith(textAlign: a)),
@@ -339,12 +336,10 @@ class _EditorToolbar extends StatelessWidget {
     required this.doc,
     required this.toolTab,
     required this.textController,
-    required this.categories,
     required this.fonts,
     required this.shapes,
     required this.icons,
     required this.onTab,
-    required this.onCategory,
     required this.onTextChanged,
     required this.onFont,
     required this.onAlign,
@@ -358,12 +353,10 @@ class _EditorToolbar extends StatelessWidget {
   final CanvasDocument doc;
   final String toolTab;
   final TextEditingController textController;
-  final List<String> categories;
   final List<(String, String)> fonts;
   final List<String> shapes;
   final List<IconData> icons;
   final ValueChanged<String> onTab;
-  final ValueChanged<String> onCategory;
   final ValueChanged<String> onTextChanged;
   final ValueChanged<String> onFont;
   final ValueChanged<TextAlign> onAlign;
@@ -384,26 +377,10 @@ class _EditorToolbar extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                children: categories.map((c) {
-                  return Padding(
-                    padding: const EdgeInsets.only(right: AppSpacing.sm),
-                    child: CelestialPillChip(
-                      label: c,
-                      selected: doc.category == c,
-                      onTap: () => onCategory(c),
-                    ),
-                  );
-                }).toList(),
-              ),
-            ),
-            const SizedBox(height: AppSpacing.md),
             Row(
               children: [
                 _ToolTab(label: 'Text', icon: Icons.text_fields, active: toolTab == 'text', onTap: () => onTab('text')),
-                _ToolTab(label: 'Fonts', icon: Icons.font_download_outlined, active: toolTab == 'fonts', onTap: () => onTab('fonts')),
+                _ToolTab(label: 'Style', icon: Icons.font_download_outlined, active: toolTab == 'fonts', onTap: () => onTab('fonts')),
                 _ToolTab(label: 'Shapes', icon: Icons.crop_square_outlined, active: toolTab == 'shapes', onTap: () => onTab('shapes')),
                 _ToolTab(label: 'Icons', icon: Icons.emoji_emotions_outlined, active: toolTab == 'icons', onTap: () => onTab('icons')),
               ],
@@ -499,12 +476,12 @@ class _EditorToolbar extends StatelessWidget {
                   child: OutlinedButton.icon(
                     onPressed: onSearchWallpaper,
                     icon: const Icon(Icons.image_search),
-                    label: const Text('Search wallpaper'),
+                    label: const Text('Background'),
                     style: OutlinedButton.styleFrom(foregroundColor: CelestialColors.onSurface),
                   ),
                 ),
                 const SizedBox(width: AppSpacing.sm),
-                Expanded(child: CelestialPrimaryButton(label: 'Set wallpaper', onPressed: onDone, expanded: true)),
+                Expanded(child: CelestialPrimaryButton(label: 'Preview', onPressed: onDone, expanded: true)),
               ],
             ),
           ],

@@ -117,11 +117,12 @@ class _ExploreTopicsScreenState extends ConsumerState<ExploreTopicsScreen> {
                     const SizedBox(height: AppSpacing.md),
                     Expanded(
                       child: GridView.builder(
+                        padding: const EdgeInsets.only(bottom: AppSpacing.lg),
                         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           crossAxisSpacing: AppSpacing.md,
                           mainAxisSpacing: AppSpacing.md,
-                          childAspectRatio: 1.1,
+                          childAspectRatio: 1.2,
                         ),
                         itemCount: topics.length,
                         itemBuilder: (context, i) {
@@ -174,56 +175,62 @@ class _TopicCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(AppRadius.lg),
         child: GlassPanel(
           radius: AppRadius.lg,
-          padding: const EdgeInsets.all(AppSpacing.md),
+          padding: EdgeInsets.zero,
           child: DecoratedBox(
             decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(AppRadius.lg - 2),
+              borderRadius: BorderRadius.circular(AppRadius.lg),
               border: Border.all(
                 color: selected ? CelestialPalette.selectedBorder(brightness) : Colors.transparent,
                 width: 2,
               ),
               color: selected ? CelestialPalette.selectedFill(brightness) : Colors.transparent,
             ),
-            child: Padding(
-              padding: const EdgeInsets.all(AppSpacing.sm),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: selected
-                          ? c.buttonPrimary.withValues(alpha: 0.2)
-                          : c.surface.withValues(alpha: 0.5),
-                      borderRadius: BorderRadius.circular(AppRadius.sm),
-                    ),
-                    child: Icon(
-                      topic.icon,
-                      color: selected ? c.buttonPrimary : c.primary,
-                      size: 26,
-                    ),
+            child: Stack(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(14, 14, 14, 12),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.all(8),
+                        decoration: BoxDecoration(
+                          color: selected
+                              ? c.buttonPrimary.withValues(alpha: 0.2)
+                              : c.surface.withValues(alpha: 0.5),
+                          borderRadius: BorderRadius.circular(AppRadius.sm),
+                        ),
+                        child: Icon(
+                          topic.icon,
+                          color: selected ? c.buttonPrimary : c.primary,
+                          size: 22,
+                        ),
+                      ),
+                      const Spacer(),
+                      Text(
+                        topic.title,
+                        maxLines: 2,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 14,
+                          height: 1.2,
+                          color: selected ? c.textPrimary : c.textSecondary,
+                        ),
+                      ),
+                    ],
                   ),
-                  const Spacer(),
-                  Text(
-                    topic.title,
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 14,
-                      height: 1.25,
-                      color: selected ? c.textPrimary : c.textSecondary,
-                    ),
+                ),
+                Positioned(
+                  top: 10,
+                  right: 10,
+                  child: Icon(
+                    selected ? Icons.check_circle : Icons.circle_outlined,
+                    color: selected ? c.buttonPrimary : c.textMuted,
+                    size: 18,
                   ),
-                  const SizedBox(height: AppSpacing.sm),
-                  Align(
-                    alignment: Alignment.bottomRight,
-                    child: Icon(
-                      selected ? Icons.check_circle : Icons.circle_outlined,
-                      color: selected ? c.buttonPrimary : c.textMuted,
-                      size: 22,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),

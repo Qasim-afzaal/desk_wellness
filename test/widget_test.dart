@@ -5,7 +5,7 @@ import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   testWidgets('App boots', (WidgetTester tester) async {
-    await tester.pumpWidget(const ProviderScope(child: AffirmlyApp()));
+    await tester.pumpWidget(const ProviderScope(child: AffirfestingApp()));
     await tester.pump();
     expect(find.byType(MaterialApp), findsOneWidget);
   });

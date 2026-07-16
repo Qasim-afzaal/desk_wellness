@@ -4,8 +4,8 @@ import 'package:desk_wellness/shared/providers/repository_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AffirmlyApp extends ConsumerWidget {
-  const AffirmlyApp({super.key});
+class AffirfestingApp extends ConsumerWidget {
+  const AffirfestingApp({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,7 +22,7 @@ class AffirmlyApp extends ConsumerWidget {
     );
 
     return MaterialApp.router(
-      title: 'Affirmly',
+      title: 'Affirfesting',
       debugShowCheckedModeBanner: false,
       theme: buildAppTheme(brightness: Brightness.light),
       darkTheme: buildAppTheme(brightness: Brightness.dark),

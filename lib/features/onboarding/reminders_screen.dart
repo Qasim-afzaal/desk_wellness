@@ -50,7 +50,7 @@ class OnboardingRemindersScreen extends ConsumerWidget {
                 style: CelestialTypography.bodyMd(brightness: brightness),
               ),
               const SizedBox(height: AppSpacing.xl),
-              _ReminderRow(icon: Icons.wb_sunny_outlined, title: 'Morning boost', time: '8:30 AM'),
+              _ReminderRow(icon: Icons.wb_sunny_outlined, title: 'Morning manifestation', time: '8:30 AM'),
               const SizedBox(height: AppSpacing.sm),
               _ReminderRow(icon: Icons.lightbulb_outline, title: 'Midday affirmation', time: '12:30 PM'),
               const SizedBox(height: AppSpacing.sm),

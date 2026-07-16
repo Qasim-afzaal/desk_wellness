@@ -1,5 +1,6 @@
 import 'package:desk_wellness/core/theme/app_theme.dart';
 import 'package:desk_wellness/core/theme/celestial_theme.dart';
+import 'package:desk_wellness/core/widgets/app_logo.dart';
 import 'package:desk_wellness/core/widgets/celestial_widgets.dart';
 import 'package:desk_wellness/features/onboarding/goals_screen.dart';
 import 'package:desk_wellness/shared/providers/repository_providers.dart';
@@ -22,6 +23,18 @@ class ProfileScreen extends ConsumerWidget {
         'dark' => Icons.dark_mode_outlined,
         _ => Icons.brightness_auto_outlined,
       };
+
+  Future<void> _editName(BuildContext context, WidgetRef ref, String currentName) async {
+    final name = await showDialog<String>(
+      context: context,
+      builder: (_) => _EditNameDialog(
+        initialName: currentName == 'Maya Lee' ? '' : currentName,
+      ),
+    );
+    if (name != null && name.isNotEmpty) {
+      await ref.read(settingsRepositoryProvider).setDisplayName(name);
+    }
+  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -58,33 +71,35 @@ class ProfileScreen extends ConsumerWidget {
                         children: [
                           Row(
                             children: [
-                              Container(
-                                width: 72,
-                                height: 72,
-                                decoration: BoxDecoration(
-                                  gradient: CelestialGradients.button(brightness),
-                                  shape: BoxShape.circle,
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: c.buttonPrimary.withValues(alpha: 0.3),
-                                      blurRadius: 20,
-                                      offset: const Offset(0, 6),
-                                    ),
-                                  ],
-                                ),
-                                alignment: Alignment.center,
-                                child: Text(
-                                  initial,
-                                  style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: c.onPrimary),
-                                ),
-                              ),
+                              settings.displayName.isNotEmpty
+                                  ? Container(
+                                      width: 72,
+                                      height: 72,
+                                      decoration: BoxDecoration(
+                                        gradient: CelestialGradients.button(brightness),
+                                        shape: BoxShape.circle,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: c.buttonPrimary.withValues(alpha: 0.3),
+                                            blurRadius: 20,
+                                            offset: const Offset(0, 6),
+                                          ),
+                                        ],
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: Text(
+                                        initial,
+                                        style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: c.onPrimary),
+                                      ),
+                                    )
+                                  : const AffirfestingLogo(size: 72, showShadow: true),
                               const SizedBox(width: AppSpacing.md),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      settings.displayName.isNotEmpty ? settings.displayName : 'Affirmly member',
+                                      settings.displayName.isNotEmpty ? settings.displayName : 'Affirfesting member',
                                       style: CelestialTypography.headlineLg(brightness: brightness).copyWith(fontSize: 22),
                                     ),
                                     const SizedBox(height: 4),
@@ -94,6 +109,11 @@ class ProfileScreen extends ConsumerWidget {
                                     ),
                                   ],
                                 ),
+                              ),
+                              IconButton(
+                                tooltip: 'Edit name',
+                                onPressed: () => _editName(context, ref, settings.displayName),
+                                icon: Icon(Icons.edit_outlined, color: c.textMuted),
                               ),
                             ],
                           ),
@@ -142,6 +162,11 @@ class ProfileScreen extends ConsumerWidget {
                         Text(
                           'Weekly rhythm',
                           style: CelestialTypography.headlineLg(brightness: brightness).copyWith(fontSize: 18),
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          'Wallpapers saved over the last 7 days',
+                          style: CelestialTypography.bodyMd(color: c.textMuted, brightness: brightness),
                         ),
                         const SizedBox(height: AppSpacing.md),
                         GlassPanel(
@@ -365,6 +390,64 @@ class _SettingsTile extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _EditNameDialog extends StatefulWidget {
+  const _EditNameDialog({required this.initialName});
+
+  final String initialName;
+
+  @override
+  State<_EditNameDialog> createState() => _EditNameDialogState();
+}
+
+class _EditNameDialogState extends State<_EditNameDialog> {
+  late final TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(text: widget.initialName);
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  void _submit() {
+    final trimmed = _controller.text.trim();
+    if (trimmed.isNotEmpty) Navigator.of(context).pop(trimmed);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Text('Your name'),
+      content: TextField(
+        controller: _controller,
+        autofocus: true,
+        textCapitalization: TextCapitalization.words,
+        textInputAction: TextInputAction.done,
+        decoration: const InputDecoration(
+          labelText: 'Name',
+          hintText: 'Enter your name',
+        ),
+        onSubmitted: (_) => _submit(),
+      ),
+      actions: [
+        TextButton(
+          onPressed: () => Navigator.of(context).pop(),
+          child: const Text('Cancel'),
+        ),
+        FilledButton(
+          onPressed: _submit,
+          child: const Text('Save'),
+        ),
+      ],
     );
   }
 }

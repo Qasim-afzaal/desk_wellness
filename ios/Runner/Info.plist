@@ -7,7 +7,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>Affirmly</string>
+	<string>Affirfesting</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -60,9 +60,9 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSUserNotificationUsageDescription</key>
-	<string>Affirmly sends daily affirmation reminders. You can turn these off anytime in Settings.</string>
+	<string>Affirfesting sends daily affirmation reminders. You can turn these off anytime in Settings.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>Affirmly saves your affirmation wallpapers to your photo library.</string>
+	<string>Affirfesting saves your affirmation wallpapers to your photo library.</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>

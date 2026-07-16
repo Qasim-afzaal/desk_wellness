@@ -19,6 +19,7 @@ import 'package:desk_wellness/features/widgets/widget_setup_screen.dart';
 import 'package:desk_wellness/features/watch/watch_face_screen.dart';
 import 'package:desk_wellness/core/theme/app_theme.dart';
 import 'package:desk_wellness/core/theme/celestial_theme.dart';
+import 'package:desk_wellness/core/widgets/app_logo.dart';
 import 'package:desk_wellness/core/widgets/celestial_widgets.dart';
 import 'package:desk_wellness/core/widgets/animations/kindled_animations.dart';
 import 'package:desk_wellness/shared/providers/repository_providers.dart';
@@ -28,14 +29,25 @@ import 'package:go_router/go_router.dart';
 
 final _rootKey = GlobalKey<NavigatorState>(debugLabel: 'root');
 
+/// Rebuilds redirects when settings change without recreating [GoRouter]
+/// (recreating would reset navigation mid-onboarding).
+class _RouterRefresh extends ChangeNotifier {
+  void ping() => notifyListeners();
+}
+
 final routerProvider = Provider<GoRouter>((ref) {
-  final settings = ref.watch(settingsStreamProvider);
-  final onboarded = settings.maybeWhen(data: (s) => s.onboardingComplete, orElse: () => false);
+  final refresh = _RouterRefresh();
+  ref.onDispose(refresh.dispose);
+  ref.listen(settingsStreamProvider, (_, __) => refresh.ping());
 
   return GoRouter(
     navigatorKey: _rootKey,
     initialLocation: '/splash',
+    refreshListenable: refresh,
     redirect: (context, state) {
+      final settings = ref.read(settingsStreamProvider);
+      final onboarded =
+          settings.maybeWhen(data: (s) => s.onboardingComplete, orElse: () => false);
       final loc = state.matchedLocation;
       if (settings.isLoading) return loc == '/splash' ? null : '/splash';
       if (!onboarded && !loc.startsWith('/onboarding')) return '/onboarding/welcome';
@@ -134,9 +146,9 @@ class _SplashScreen extends ConsumerWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              KindledLottie(asset: KindledAssets.sunrise, width: 160, height: 160),
+              const AffirfestingLogo(size: 120),
               const SizedBox(height: AppSpacing.lg),
-              Text('Affirmly', style: CelestialTypography.headlineLg()),
+              Text('Affirfesting', style: CelestialTypography.headlineLg()),
               const SizedBox(height: AppSpacing.md),
               KindledLottie(asset: KindledAssets.loadingDots, width: 72, height: 28),
             ],

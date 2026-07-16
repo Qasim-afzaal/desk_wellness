@@ -1,41 +1,86 @@
 import 'package:desk_wellness/core/theme/celestial_theme.dart';
 import 'package:desk_wellness/core/theme/app_theme.dart';
-import 'package:desk_wellness/core/widgets/animations/kindled_animations.dart';
 import 'package:desk_wellness/core/widgets/animations/kindled_motion.dart';
+import 'package:desk_wellness/core/widgets/app_logo.dart';
 import 'package:desk_wellness/core/widgets/celestial_widgets.dart';
+import 'package:desk_wellness/shared/providers/repository_providers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class WelcomeScreen extends ConsumerWidget {
+class WelcomeScreen extends ConsumerStatefulWidget {
   const WelcomeScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<WelcomeScreen> createState() => _WelcomeScreenState();
+}
+
+class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
+  final _nameController = TextEditingController();
+
+  @override
+  void dispose() {
+    _nameController.dispose();
+    super.dispose();
+  }
+
+  Future<void> _continue() async {
+    final name = _nameController.text.trim();
+    if (name.isEmpty) return;
+    await ref.read(settingsRepositoryProvider).setDisplayName(name);
+    if (mounted) context.go('/onboarding/goals');
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final brightness = Theme.of(context).brightness;
     return CelestialScaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(AppSpacing.lg),
-          child: Column(
-            children: [
-              const Spacer(flex: 2),
-              KindledLottie(asset: KindledAssets.sunrise, width: 200, height: 200).fadeSlideIn(),
-              const SizedBox(height: AppSpacing.lg),
-              Text('Affirmly', style: CelestialTypography.headlineLg(brightness: brightness)).fadeSlideIn(delay: 120.ms),
-              const SizedBox(height: AppSpacing.md),
-              Text(
-                'Your calm space for daily affirmations.\nGrow with intention. Live with peace.',
-                textAlign: TextAlign.center,
-                style: CelestialTypography.bodyMd(brightness: brightness),
-              ).fadeSlideIn(delay: 220.ms),
-              const Spacer(flex: 3),
-              CelestialPrimaryButton(
-                label: 'Begin your journey',
-                icon: Icons.auto_awesome,
-                onPressed: () => context.go('/onboarding/goals'),
-              ).fadeSlideIn(delay: 320.ms),
-            ],
+        child: LayoutBuilder(
+          builder: (context, constraints) => SingleChildScrollView(
+            padding: const EdgeInsets.all(AppSpacing.lg),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight - AppSpacing.xl),
+              child: IntrinsicHeight(
+                child: Column(
+                  children: [
+                    const Spacer(),
+                    const AffirfestingLogo(size: 128).fadeSlideIn(),
+                    const SizedBox(height: AppSpacing.lg),
+                    Text(
+                      'Welcome to Affirfesting',
+                      textAlign: TextAlign.center,
+                      style: CelestialTypography.headlineLg(brightness: brightness),
+                    ).fadeSlideIn(delay: 120.ms),
+                    const SizedBox(height: AppSpacing.sm),
+                    Text(
+                      'What should we call you?',
+                      textAlign: TextAlign.center,
+                      style: CelestialTypography.bodyMd(brightness: brightness),
+                    ).fadeSlideIn(delay: 180.ms),
+                    const SizedBox(height: AppSpacing.lg),
+                    TextField(
+                      controller: _nameController,
+                      textCapitalization: TextCapitalization.words,
+                      textInputAction: TextInputAction.done,
+                      onChanged: (_) => setState(() {}),
+                      onSubmitted: (_) => _continue(),
+                      decoration: const InputDecoration(
+                        labelText: 'Your name',
+                        hintText: 'Enter your name',
+                        prefixIcon: Icon(Icons.person_outline),
+                      ),
+                    ).fadeSlideIn(delay: 240.ms),
+                    const Spacer(),
+                    CelestialPrimaryButton(
+                      label: 'Continue',
+                      icon: Icons.arrow_forward,
+                      onPressed: _nameController.text.trim().isEmpty ? null : _continue,
+                    ).fadeSlideIn(delay: 320.ms),
+                  ],
+                ),
+              ),
+            ),
           ),
         ),
       ),

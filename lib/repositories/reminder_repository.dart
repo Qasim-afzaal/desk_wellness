@@ -48,21 +48,25 @@ class ReminderRepository {
   }
 
   Future<void> syncScheduledNotifications() async {
-    await _notifications.cancelAll();
-    final reminders = await _db.select(_db.reminders).get();
-    final body = await _affirmations.randomAffirmationText();
+    try {
+      await _notifications.cancelAll();
+      final reminders = await _db.select(_db.reminders).get();
+      final body = await _affirmations.randomAffirmationText();
 
-    for (final reminder in reminders) {
-      if (!reminder.enabled) continue;
-      final parts = reminder.timeOfDay.split(':');
-      if (parts.length < 2) continue;
-      await _notifications.scheduleDaily(
-        id: reminder.id,
-        hour: int.parse(parts[0]),
-        minute: int.parse(parts[1]),
-        title: reminder.title,
-        body: body,
-      );
+      for (final reminder in reminders) {
+        if (!reminder.enabled) continue;
+        final parts = reminder.timeOfDay.split(':');
+        if (parts.length < 2) continue;
+        await _notifications.scheduleDaily(
+          id: reminder.id,
+          hour: int.parse(parts[0]),
+          minute: int.parse(parts[1]),
+          title: reminder.title,
+          body: body,
+        );
+      }
+    } catch (_) {
+      // Never fail app startup because of scheduler issues.
     }
   }
 }

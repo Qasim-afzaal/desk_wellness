@@ -30,7 +30,7 @@ abstract final class SeedData {
   ];
 
   static final defaultSettings = UserSettingsCompanion.insert(
-    displayName: const Value('Maya Lee'),
+    displayName: const Value(''),
     goals: const Value('confidence,abundance,peace'),
   );
 }

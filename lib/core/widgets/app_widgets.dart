@@ -126,22 +126,33 @@ ThemeData buildAppTheme({required Brightness brightness}) {
     error: const Color(0xFFE57373),
     onError: Colors.white,
   );
-  final displayFont = brightness == Brightness.dark
-      ? GoogleFonts.playfairDisplayTextTheme()
-      : GoogleFonts.interTextTheme();
+
+  TextTheme textTheme;
+  try {
+    final displayFont = brightness == Brightness.dark
+        ? GoogleFonts.playfairDisplayTextTheme()
+        : GoogleFonts.interTextTheme();
+    textTheme = displayFont.apply(bodyColor: colors.textPrimary, displayColor: colors.textPrimary).copyWith(
+          titleLarge: GoogleFonts.playfairDisplay(fontWeight: FontWeight.w700, color: colors.textPrimary, fontSize: 24),
+          titleMedium: GoogleFonts.playfairDisplay(fontWeight: FontWeight.w600, color: colors.textPrimary, fontSize: 18),
+          bodyLarge: GoogleFonts.inter(color: colors.textSecondary, fontSize: 16),
+          bodyMedium: GoogleFonts.inter(color: colors.textSecondary, fontSize: 14),
+          labelLarge: GoogleFonts.inter(fontWeight: FontWeight.w600, color: colors.textPrimary),
+        );
+  } catch (_) {
+    textTheme = ThemeData(brightness: brightness).textTheme.apply(
+          bodyColor: colors.textPrimary,
+          displayColor: colors.textPrimary,
+        );
+  }
+
   return ThemeData(
     useMaterial3: true,
     brightness: brightness,
     colorScheme: colorScheme,
     scaffoldBackgroundColor: colors.background,
     extensions: [colors],
-    textTheme: displayFont.apply(bodyColor: colors.textPrimary, displayColor: colors.textPrimary).copyWith(
-          titleLarge: GoogleFonts.playfairDisplay(fontWeight: FontWeight.w700, color: colors.textPrimary, fontSize: 24),
-          titleMedium: GoogleFonts.playfairDisplay(fontWeight: FontWeight.w600, color: colors.textPrimary, fontSize: 18),
-          bodyLarge: GoogleFonts.inter(color: colors.textSecondary, fontSize: 16),
-          bodyMedium: GoogleFonts.inter(color: colors.textSecondary, fontSize: 14),
-          labelLarge: GoogleFonts.inter(fontWeight: FontWeight.w600, color: colors.textPrimary),
-        ),
+    textTheme: textTheme,
     appBarTheme: AppBarTheme(
       backgroundColor: colors.surface.withValues(alpha: brightness == Brightness.dark ? 0.6 : 0.9),
       foregroundColor: colors.textPrimary,

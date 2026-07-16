@@ -41,6 +41,8 @@ class WallpaperPreviewScreen extends ConsumerWidget {
                     children: [
                       if (draft.backgroundImagePath != null && File(draft.backgroundImagePath!).existsSync())
                         Image.file(File(draft.backgroundImagePath!), fit: BoxFit.cover)
+                      else if (draft.backgroundImageUrl != null && draft.backgroundImageUrl!.isNotEmpty)
+                        Image.network(draft.backgroundImageUrl!, fit: BoxFit.cover)
                       else
                         Container(color: draft.background),
                       Container(color: Colors.black.withValues(alpha: 0.35)),
@@ -162,14 +164,18 @@ class _ExportScreenState extends ConsumerState<ExportScreen> {
             padding: const EdgeInsets.all(AppSpacing.lg),
             child: Column(
               children: [
-                AspectRatio(
-                  aspectRatio: draft.exportType == 'story' ? 9 / 16 : 9 / 19.5,
-                  child: RepaintBoundary(
-                    key: _captureKey,
-                    child: AffirmationCardFromDraft(draft: draft),
+                Expanded(
+                  child: Center(
+                    child: AspectRatio(
+                      aspectRatio: draft.exportType == 'story' ? 9 / 16 : 9 / 19.5,
+                      child: RepaintBoundary(
+                        key: _captureKey,
+                        child: AffirmationCardFromDraft(draft: draft),
+                      ),
+                    ),
                   ),
                 ),
-                const SizedBox(height: AppSpacing.lg),
+                const SizedBox(height: AppSpacing.md),
                 Row(
                   children: [
                     Expanded(
@@ -191,7 +197,7 @@ class _ExportScreenState extends ConsumerState<ExportScreen> {
                     ),
                   ],
                 ),
-                const Spacer(),
+                const SizedBox(height: AppSpacing.md),
                 KindledPrimaryButton(
                   label: 'Save to photos',
                   icon: Icons.download_outlined,

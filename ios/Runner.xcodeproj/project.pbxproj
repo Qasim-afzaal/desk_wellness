@@ -17,6 +17,10 @@
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
 		ECA67CEF4F3F8F09DB3A72DE /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D9D1A4B82C4B84B788B1CC94 /* Pods_Runner.framework */; };
 		FE5F75DBDF81D017AC5B5A4E /* Pods_RunnerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 442A4732461A1089DB169061 /* Pods_RunnerTests.framework */; };
+		A11F10010000000000000007 /* AffirfestingWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = A11F10010000000000000001 /* AffirfestingWidget.swift */; };
+		A11F10010000000000000008 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11F10010000000000000005 /* WidgetKit.framework */; };
+		A11F10010000000000000009 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A11F10010000000000000006 /* SwiftUI.framework */; };
+		A11F1001000000000000000A /* AffirfestingWidgetExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = A11F10010000000000000004 /* AffirfestingWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +30,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 97C146ED1CF9000F007C117D;
 			remoteInfo = Runner;
+		};
+		A11F10010000000000000011 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 97C146E61CF9000F007C117D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A11F1001000000000000000F;
+			remoteInfo = AffirfestingWidgetExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -38,6 +49,17 @@
 			files = (
 			);
 			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11F1001000000000000000B /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				A11F1001000000000000000A /* AffirfestingWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -74,6 +96,12 @@
 		D9D1A4B82C4B84B788B1CC94 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9E4DB7774987426328FAEFD /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		F83253A830B3FA558A534790 /* AffirmlyWatchApp.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = AffirmlyWatchApp.swift; sourceTree = "<group>"; };
+		A11F10010000000000000001 /* AffirfestingWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirfestingWidget.swift; sourceTree = "<group>"; };
+		A11F10010000000000000002 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A11F10010000000000000003 /* AffirfestingWidget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AffirfestingWidget.entitlements; sourceTree = "<group>"; };
+		A11F10010000000000000004 /* AffirfestingWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = AffirfestingWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		A11F10010000000000000005 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		A11F10010000000000000006 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +118,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				ECA67CEF4F3F8F09DB3A72DE /* Pods_Runner.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11F1001000000000000000C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A11F10010000000000000008 /* WidgetKit.framework in Frameworks */,
+				A11F10010000000000000009 /* SwiftUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,11 +166,22 @@
 			name = Flutter;
 			sourceTree = "<group>";
 		};
+		A11F10010000000000000010 /* AffirfestingWidget */ = {
+			isa = PBXGroup;
+			children = (
+				A11F10010000000000000001 /* AffirfestingWidget.swift */,
+				A11F10010000000000000002 /* Info.plist */,
+				A11F10010000000000000003 /* AffirfestingWidget.entitlements */,
+			);
+			path = AffirfestingWidget;
+			sourceTree = "<group>";
+		};
 		97C146E51CF9000F007C117D = {
 			isa = PBXGroup;
 			children = (
 				9740EEB11CF90186004384FC /* Flutter */,
 				97C146F01CF9000F007C117D /* Runner */,
+				A11F10010000000000000010 /* AffirfestingWidget */,
 				97C146EF1CF9000F007C117D /* Products */,
 				331C8082294A63A400263BE5 /* RunnerTests */,
 				D789E838D42F56DD54A6A2E5 /* Frameworks */,
@@ -148,6 +196,7 @@
 				97C146EE1CF9000F007C117D /* Runner.app */,
 				331C8081294A63A400263BE5 /* RunnerTests.xctest */,
 				7D1DCCD4D29366F76C8E9A63 /* Affirmly Watch App.app */,
+				A11F10010000000000000004 /* AffirfestingWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,6 +229,8 @@
 			isa = PBXGroup;
 			children = (
 				9ABFB1A0DC861C90D81C8D81 /* watchOS */,
+				A11F10010000000000000005 /* WidgetKit.framework */,
+				A11F10010000000000000006 /* SwiftUI.framework */,
 				D9D1A4B82C4B84B788B1CC94 /* Pods_Runner.framework */,
 				442A4732461A1089DB169061 /* Pods_RunnerTests.framework */,
 			);
@@ -231,17 +282,36 @@
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
+				A11F1001000000000000000B /* Embed Foundation Extensions */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 				5ABFE28DBFBE3D793D58D0D2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				A11F10010000000000000012 /* PBXTargetDependency */,
 			);
 			name = Runner;
 			productName = Runner;
 			productReference = 97C146EE1CF9000F007C117D /* Runner.app */;
 			productType = "com.apple.product-type.application";
+		};
+		A11F1001000000000000000F /* AffirfestingWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A11F10010000000000000016 /* Build configuration list for PBXNativeTarget "AffirfestingWidgetExtension" */;
+			buildPhases = (
+				A11F1001000000000000000D /* Sources */,
+				A11F1001000000000000000C /* Frameworks */,
+				A11F1001000000000000000E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AffirfestingWidgetExtension;
+			productName = AffirfestingWidgetExtension;
+			productReference = A11F10010000000000000004 /* AffirfestingWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -261,6 +331,9 @@
 						CreatedOnToolsVersion = 7.3.1;
 						LastSwiftMigration = 1100;
 					};
+					A11F1001000000000000000F = {
+						CreatedOnToolsVersion = 15.0;
+					};
 				};
 			};
 			buildConfigurationList = 97C146E91CF9000F007C117D /* Build configuration list for PBXProject "Runner" */;
@@ -278,6 +351,7 @@
 			targets = (
 				97C146ED1CF9000F007C117D /* Runner */,
 				331C8080294A63A400263BE5 /* RunnerTests */,
+				A11F1001000000000000000F /* AffirfestingWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -298,6 +372,13 @@
 				3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */,
 				97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */,
 				97C146FC1CF9000F007C117D /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A11F1001000000000000000E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -417,6 +498,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A11F1001000000000000000D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A11F10010000000000000007 /* AffirfestingWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -424,6 +513,11 @@
 			isa = PBXTargetDependency;
 			target = 97C146ED1CF9000F007C117D /* Runner */;
 			targetProxy = 331C8085294A63A400263BE5 /* PBXContainerItemProxy */;
+		};
+		A11F10010000000000000012 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A11F1001000000000000000F /* AffirfestingWidgetExtension */;
+			targetProxy = A11F10010000000000000011 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -730,6 +824,93 @@
 			};
 			name = Release;
 		};
+		A11F10010000000000000013 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AffirfestingWidget/AffirfestingWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 736C7NWXUW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AffirfestingWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Affirfesting;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellig.deskwellness.deskWellness.AffirfestingWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		A11F10010000000000000014 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AffirfestingWidget/AffirfestingWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 736C7NWXUW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AffirfestingWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Affirfesting;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellig.deskwellness.deskWellness.AffirfestingWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		A11F10010000000000000015 /* Profile */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APPLICATION_EXTENSION_API_ONLY = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = AffirfestingWidget/AffirfestingWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 736C7NWXUW;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = AffirfestingWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Affirfesting;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.intellig.deskwellness.deskWellness.AffirfestingWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Profile;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -759,6 +940,16 @@
 				97C147061CF9000F007C117D /* Debug */,
 				97C147071CF9000F007C117D /* Release */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A11F10010000000000000016 /* Build configuration list for PBXNativeTarget "AffirfestingWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A11F10010000000000000013 /* Debug */,
+				A11F10010000000000000014 /* Release */,
+				A11F10010000000000000015 /* Profile */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
