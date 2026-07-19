@@ -110,7 +110,7 @@ class _TodayScreenState extends ConsumerState<TodayScreen> {
               padding: const EdgeInsets.fromLTRB(AppSpacing.lg, AppSpacing.sm, AppSpacing.lg, 0),
               child: Row(
                 children: [
-                  AffirfestingBrandMark(
+                  AffirmationBrandMark(
                     logoSize: 40,
                     titleStyle: CelestialTypography.headlineLg(brightness: brightness).copyWith(fontSize: 20),
                     subtitle: 'Daily affirmations',
