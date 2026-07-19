@@ -92,14 +92,14 @@ class ProfileScreen extends ConsumerWidget {
                                         style: TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: c.onPrimary),
                                       ),
                                     )
-                                  : const AffirfestingLogo(size: 72, showShadow: true),
+                                  : const AffirmationLogo(size: 72, showShadow: true),
                               const SizedBox(width: AppSpacing.md),
                               Expanded(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      settings.displayName.isNotEmpty ? settings.displayName : 'Affirfesting member',
+                                      settings.displayName.isNotEmpty ? settings.displayName : 'Affirmation member',
                                       style: CelestialTypography.headlineLg(brightness: brightness).copyWith(fontSize: 22),
                                     ),
                                     const SizedBox(height: 4),
