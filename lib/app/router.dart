@@ -146,9 +146,9 @@ class _SplashScreen extends ConsumerWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              const AffirfestingLogo(size: 120),
+              const AffirmationLogo(size: 120),
               const SizedBox(height: AppSpacing.lg),
-              Text('Affirfesting', style: CelestialTypography.headlineLg()),
+              Text('Affirmation', style: CelestialTypography.headlineLg()),
               const SizedBox(height: AppSpacing.md),
               KindledLottie(asset: KindledAssets.loadingDots, width: 72, height: 28),
             ],
