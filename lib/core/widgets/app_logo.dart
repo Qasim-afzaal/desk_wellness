@@ -2,9 +2,9 @@ import 'package:desk_wellness/core/theme/app_theme.dart';
 import 'package:desk_wellness/core/theme/celestial_theme.dart';
 import 'package:flutter/material.dart';
 
-/// Affirfesting logo from `assets/branding/app_logo.png`.
-class AffirfestingLogo extends StatelessWidget {
-  const AffirfestingLogo({
+/// Affirmation logo from `assets/branding/app_logo.png`.
+class AffirmationLogo extends StatelessWidget {
+  const AffirmationLogo({
     super.key,
     this.size = 120,
     this.showShadow = true,
@@ -16,7 +16,7 @@ class AffirfestingLogo extends StatelessWidget {
   final BorderRadius? borderRadius;
 
   static const assetPath = 'assets/branding/app_logo.png';
-  static const appName = 'Affirfesting';
+  static const appName = 'Affirmation';
 
   @override
   Widget build(BuildContext context) {
@@ -52,8 +52,8 @@ class AffirfestingLogo extends StatelessWidget {
 }
 
 /// Logo + wordmark row for headers.
-class AffirfestingBrandMark extends StatelessWidget {
-  const AffirfestingBrandMark({
+class AffirmationBrandMark extends StatelessWidget {
+  const AffirmationBrandMark({
     super.key,
     this.logoSize = 36,
     this.titleStyle,
@@ -74,13 +74,13 @@ class AffirfestingBrandMark extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        AffirfestingLogo(size: logoSize, showShadow: false, borderRadius: BorderRadius.circular(logoSize * 0.22)),
+        AffirmationLogo(size: logoSize, showShadow: false, borderRadius: BorderRadius.circular(logoSize * 0.22)),
         const SizedBox(width: AppSpacing.sm),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(AffirfestingLogo.appName, style: titleStyle ?? title),
+            Text(AffirmationLogo.appName, style: titleStyle ?? title),
             if (subtitle != null)
               Text(
                 subtitle!,
