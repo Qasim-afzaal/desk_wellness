@@ -73,7 +73,7 @@ struct AffirfestingWidgetView: View {
                 HStack(spacing: 6) {
                     Text("✦")
                         .foregroundStyle(Color(hex: entry.accentHex))
-                    Text("AFFIRFESTING")
+                    Text("AFFIRMATION")
                         .font(.system(size: 10, weight: .bold, design: .rounded))
                         .tracking(1.2)
                         .foregroundStyle(Color(hex: entry.textHex).opacity(0.72))
@@ -101,7 +101,7 @@ struct AffirfestingWidget: Widget {
         StaticConfiguration(kind: widgetKind, provider: AffirfestingProvider()) { entry in
             AffirfestingWidgetView(entry: entry)
         }
-        .configurationDisplayName("Affirfesting")
+        .configurationDisplayName("Affirmation")
         .description("Keep your chosen affirmation on your Home Screen.")
         .supportedFamilies([.systemSmall, .systemMedium, .systemLarge])
     }
