@@ -45,10 +45,10 @@ class _WelcomeScreenState extends ConsumerState<WelcomeScreen> {
                 child: Column(
                   children: [
                     const Spacer(),
-                    const AffirfestingLogo(size: 128).fadeSlideIn(),
+                    const AffirmationLogo(size: 128).fadeSlideIn(),
                     const SizedBox(height: AppSpacing.lg),
                     Text(
-                      'Welcome to Affirfesting',
+                      'Welcome to Affirmation',
                       textAlign: TextAlign.center,
                       style: CelestialTypography.headlineLg(brightness: brightness),
                     ).fadeSlideIn(delay: 120.ms),
