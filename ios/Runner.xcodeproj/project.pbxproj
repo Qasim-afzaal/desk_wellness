@@ -835,7 +835,7 @@
 				DEVELOPMENT_TEAM = 736C7NWXUW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AffirfestingWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Affirfesting;
+				INFOPLIST_KEY_CFBundleDisplayName = Affirmation;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -864,7 +864,7 @@
 				DEVELOPMENT_TEAM = 736C7NWXUW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AffirfestingWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Affirfesting;
+				INFOPLIST_KEY_CFBundleDisplayName = Affirmation;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -893,7 +893,7 @@
 				DEVELOPMENT_TEAM = 736C7NWXUW;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = AffirfestingWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = Affirfesting;
+				INFOPLIST_KEY_CFBundleDisplayName = Affirmation;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
