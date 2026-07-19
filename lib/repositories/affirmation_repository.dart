@@ -42,7 +42,7 @@ class AffirmationRepository {
 
   Future<String> randomAffirmationText() async {
     final all = await _db.select(_db.affirmations).get();
-    if (all.isEmpty) return 'Open Affirfesting for your daily affirmation.';
+    if (all.isEmpty) return 'Open Affirmation for your daily affirmation.';
     return all[DateTime.now().millisecond % all.length].content;
   }
 
