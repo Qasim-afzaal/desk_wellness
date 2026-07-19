@@ -22,5 +22,5 @@ Future<void> main() async {
     debugPrint('configureDependencies failed: $e\n$st');
   }
 
-  runApp(const ProviderScope(child: AffirfestingApp()));
+  runApp(const ProviderScope(child: AffirmationApp()));
 }
