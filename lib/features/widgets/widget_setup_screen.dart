@@ -115,7 +115,7 @@ class _WidgetSetupScreenState extends ConsumerState<WidgetSetupScreen> {
           pin
               ? (pinned
                   ? 'Widget ready — confirm placement on your home screen'
-                  : 'Widget saved — add Affirfesting from your widget gallery')
+                  : 'Widget saved — add Affirmation from your widget gallery')
               : 'Widget text updated',
         ),
       ),
@@ -220,7 +220,7 @@ class _WidgetSetupScreenState extends ConsumerState<WidgetSetupScreen> {
               contentPadding: EdgeInsets.zero,
               value: _showBrand,
               onChanged: (value) => setState(() => _showBrand = value),
-              title: const Text('Show Affirfesting name'),
+              title: const Text('Show Affirmation name'),
               subtitle: const Text('Display the brand above the affirmation'),
             ),
             const SizedBox(height: AppSpacing.sm),
@@ -328,7 +328,7 @@ class _PreviewCard extends StatelessWidget {
                 Icon(Icons.auto_awesome, color: style.accent, size: 16),
                 const SizedBox(width: 6),
                 Text(
-                  'AFFIRFESTING',
+                  'AFFIRMATION',
                   style: TextStyle(
                     color: style.text.withValues(alpha: 0.72),
                     fontSize: 11,
